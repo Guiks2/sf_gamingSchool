@@ -1,4 +1,14 @@
-{% extends 'GamingSchoolBundle::base.html.twig' %}
-<div>
+{% extends "GamingSchoolBundle::base.html.twig" %}
 
-</div>
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    <div class="">
+        <form method="POST" action="">
+            <input class="username" type="text" name="login"  id="log" value="" placeholder="Login">
+            <input class="password" type="password" name="password"  id="pwd" placeholder="Password">
+
+            <input  class="button" type="submit" name="submit" value="Connexion">
+        </form>
+    </div>
+{% endblock %}
