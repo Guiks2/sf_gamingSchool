@@ -21,3 +21,8 @@ bin/symfony_requirements
 var/SymfonyRequirements.php
 web/config.php
 .project
+.idea/misc.xml
+.idea/modules.xml
+.idea/sf_gamingSchool.iml
+.idea/vcs.xml
+.idea/workspace.xml
