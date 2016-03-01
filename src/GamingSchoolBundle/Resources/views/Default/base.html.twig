@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GamingSchool - Coaching eSport</title>
+		<meta charset="UTF-8" />
+		{% block stylesheets %}
+        	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/gamingschool/css/index-style.css') }}">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"
+	</head>
+
+	<body>
+		<header>
+			<img src="#" alt="GamingSchool"></img>
+		</header>
+
+		<div id="mainContainer">
+			{% block content %}
+		</div>
+	</body>
+</html>
