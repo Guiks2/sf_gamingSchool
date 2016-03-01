@@ -17,3 +17,6 @@
 bin/symfony_requirements
 var/SymfonyRequirements.php
 web/config.php
+bin/symfony_requirements
+var/SymfonyRequirements.php
+web/config.php
