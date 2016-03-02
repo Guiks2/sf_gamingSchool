@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User extends BaseUser
 {
+
     /**
      * @var int
      *
@@ -27,30 +28,17 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="user_username", type="string", length=30, unique=true)
-     */
-    protected $userUsername;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="user_firstname", type="string", length=30)
+     * @ORM\Column(name="user_firstname", type="string", length=30, nullable=true)
      */
     protected $userFirstname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="user_lastname", type="string", length=30)
+     * @ORM\Column(name="user_lastname", type="string", length=30, nullable=true)
      */
     protected $userLastname;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="user_email", type="string", length=255)
-     */
-    protected $userEmail;
 
     /**
      * @var string
@@ -71,7 +59,8 @@ class User extends BaseUser
      *
      * @ORM\Column(name="user_sold", type="float")
      */
-    protected $userSold;
+    protected $userSold = 0;
+
 
     /**
     * @ORM\OneToMany(targetEntity="CoachingPack", mappedBy="coachingPackCoachId", cascade={"persist", "remove", "merge"})
@@ -314,6 +303,7 @@ class User extends BaseUser
      */
     public function __construct()
     {
+        parent::__construct();
         $this->coaching_pack = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
