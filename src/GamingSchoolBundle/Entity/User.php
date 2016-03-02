@@ -2,6 +2,7 @@
 
 namespace GamingSchoolBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -11,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="GamingSchoolBundle\Repository\UserRepository")
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var int
@@ -19,70 +20,64 @@ class User
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="user_username", type="string", length=30, unique=true)
      */
-    private $userUsername;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=30)
-     */
-    private $password;
+    protected $userUsername;
 
     /**
      * @var string
      *
      * @ORM\Column(name="user_firstname", type="string", length=30)
      */
-    private $userFirstname;
+    protected $userFirstname;
 
     /**
      * @var string
      *
      * @ORM\Column(name="user_lastname", type="string", length=30)
      */
-    private $userLastname;
+    protected $userLastname;
 
     /**
      * @ORM\ManyToOne(targetEntity="statut", inversedBy="user")
      * @ORM\JoinColumn(name="user_statut", referencedColumnName="id")
      */
-    private $userStatut;
+    protected $userStatut;
 
     /**
      * @var string
      *
      * @ORM\Column(name="user_email", type="string", length=255)
      */
-    private $userEmail;
+    protected $userEmail;
 
     /**
      * @var string
      *
      * @ORM\Column(name="user_address", type="string", length=255, nullable=true)
      */
-    private $userAddress;
+    protected $userAddress;
 
     /**
      * @var string
      *
      * @ORM\Column(name="user_phone", type="string", length=20, nullable=true)
      */
-    private $userPhone;
+    protected $userPhone;
 
     /**
      * @var float
      *
      * @ORM\Column(name="user_sold", type="float")
      */
-    private $userSold;
+    protected $userSold;
 
 
     /**
