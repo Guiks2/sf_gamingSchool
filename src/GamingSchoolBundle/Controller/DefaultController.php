@@ -23,33 +23,37 @@ class DefaultController extends Controller
 	
 	/**
      * @Route("/login", name="login")
-     */
+     *//*
     public function loginAction(Request $request)
     {
-		
+
 		// values POST
-		
-		$username = ""; 
+
+		$username = "";
 		$password = "";
-		
+
 		// match username/password in database
+
+
+		$query = $qb->getQuery();
+		$result = $query->getResult();
 		
-		
-		
-		
+		echo $result;
+
+
 		$session = $request->getSession();
-		
+
 		// Create or get user session id
 		$idUser = 1;
 
 		// set session attributes
 		$session->set('idUser', $idUser);
-		
+
 		$data = array();
 		$date = date('d/m/Y H:i:s');
 		$data["date"] = $date;
 		return $this->render('GamingSchoolBundle:Default:login.html.twig', $data);
-    }
+    }*/
 	
 	/**
      * @Route("/signup", name="signup")
@@ -61,17 +65,25 @@ class DefaultController extends Controller
     }
 	
 	/**
-     * @Route("/profile", name="profile")
+     * @Route("/profile/user", name="userprofile")
      */
-    public function profileAction(Request $request)
+    public function userProfileAction(Request $request)
     {
 		$connected = $this->checkIsConnected($request);
 		if (!$connected){
 			return new RedirectResponse('login');
 		} else {
-			return new Response('Mon profil');
-			//return $this->render('GamingSchoolBundle:Default:profile.html.twig');
+			//return new Response('Mon profil');
+			return $this->render('GamingSchoolBundle:Default:profile.html.twig');
 		}
+	}
+
+	/**
+     * @Route("/profile/coach", name="coachprofile")
+     */
+    public function coachProfileAction(Request $request)
+    {
+		return $this->render('GamingSchoolBundle:Default:coach.html.twig');
     }
 	
 	public function checkIsConnected(Request $request){
