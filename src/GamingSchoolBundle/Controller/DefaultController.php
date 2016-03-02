@@ -56,9 +56,9 @@ class DefaultController extends Controller
     }
 	
 	/**
-     * @Route("/subscribe", name="subscribe")
+     * @Route("/signup", name="signup")
      */
-    public function subscribeAction()
+    public function signupAction()
     {
         return new Response('Page d\'inscription');
 		//return $this->render('GamingSchoolBundle:Default:subscribe.html.twig');
