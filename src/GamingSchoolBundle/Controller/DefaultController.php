@@ -28,17 +28,13 @@ class DefaultController extends Controller
     {
 		
 		// values POST
-		$form = $this->createForm(new ProposePostType(), $post);
+		
 		$username = ""; 
 		$password = "";
 		
 		// match username/password in database
 		
 		
-		$query = $qb->getQuery();
-		$result = $query->getResult();
-		
-		echo $result;
 		
 		
 		$session = $request->getSession();
