@@ -2,11 +2,13 @@
 
 namespace GamingSchoolBundle\Controller;
 
+use GamingSchoolBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class DefaultController extends Controller
 {
@@ -24,6 +26,17 @@ class DefaultController extends Controller
      */
     public function loginAction(Request $request)
     {
+		
+		// values POST
+		
+		$username = ""; 
+		$password = "";
+		
+		// match username/password in database
+		
+		
+		
+		
 		$session = $request->getSession();
 		
 		// Create or get user session id
@@ -50,12 +63,23 @@ class DefaultController extends Controller
 	/**
      * @Route("/profile", name="profile")
      */
-    public function profileAction()
+    public function profileAction(Request $request)
     {
-		return $this->render('GamingSchoolBundle:Default:profile.html.twig');
+		$connected = $this->checkIsConnected($request);
+		if (!$connected){
+			return new RedirectResponse('login');
+		} else {
+			return new Response('Mon profil');
+			//return $this->render('GamingSchoolBundle:Default:profile.html.twig');
+		}
     }
 	
-	function checkIsConnected(){
-		$idUser = $session->get('idUser');
+	public function checkIsConnected(Request $request){
+		$session = $request->getSession();
+		if ($session->get('idUser') == null || $session->get('idUser') == ''){
+			return false;
+		} else {
+			return true;
+		}
 	}
 }
