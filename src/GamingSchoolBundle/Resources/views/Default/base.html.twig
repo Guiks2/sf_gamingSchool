@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>GamingSchool - Coaching eSport</title>
+		<title>GamingSchool - {% block title %}{% endblock %}</title>
 		<meta charset="UTF-8" />
 
 		{% block stylesheets %}
@@ -17,9 +17,9 @@
 			<div id="headerContainer">
 				<a href="/"><img src="{{ asset('/bundles/gamingschool/img/logo.png') }}" alt="GamingSchool" /></a>
 				<ul>
-					<li><a href="#">NOS COACHS</a></li>
-					<li><a href="#">NOS JEUX</a></li>
-					<li><a href="#">A PROPOS DE NOUS</a></li>
+					<li><a href="#" class="hover-sliding">NOS COACHS</a></li>
+					<li><a href="#" class="hover-sliding">NOS JEUX</a></li>
+					<li><a href="#" class="hover-sliding">A PROPOS DE NOUS</a></li>
 					<li>
 						<a href="login" id="loginLabel">
 							CONNEXION
