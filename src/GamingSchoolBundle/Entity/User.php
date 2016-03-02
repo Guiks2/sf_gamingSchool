@@ -38,11 +38,7 @@ class User extends BaseUser
      * @ORM\Column(name="user_lastname", type="string", length=30, nullable=true)
      */
     protected $userLastname;
-
-
     /**
-     * @var string
-     *
      * @ORM\Column(name="user_address", type="string", length=255, nullable=true)
      */
     protected $userAddress;
@@ -108,54 +104,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set userUsername
-     *
-     * @param string $userUsername
-     *
-     * @return User
-     */
-    public function setUserUsername($userUsername)
-    {
-        $this->userUsername = $userUsername;
-
-        return $this;
-    }
-
-    /**
-     * Get userUsername
-     *
-     * @return string
-     */
-    public function getUserUsername()
-    {
-        return $this->userUsername;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
      * Set userFirstname
      *
      * @param string $userFirstname
@@ -201,30 +149,6 @@ class User extends BaseUser
     public function getUserLastname()
     {
         return $this->userLastname;
-    }
-
-    /**
-     * Set userEmail
-     *
-     * @param string $userEmail
-     *
-     * @return User
-     */
-    public function setUserEmail($userEmail)
-    {
-        $this->userEmail = $userEmail;
-
-        return $this;
-    }
-
-    /**
-     * Get userEmail
-     *
-     * @return string
-     */
-    public function getUserEmail()
-    {
-        return $this->userEmail;
     }
 
     /**
@@ -304,7 +228,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->coaching_pack = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->coaching_pack = new \Doctrine\Common\Collections\ArrayCollection();        
     }
 
     /**

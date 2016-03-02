@@ -73,8 +73,8 @@ class DefaultController extends Controller
 		if (!$connected){
 			return new RedirectResponse('login');
 		} else {
-			return new Response('Mon profil');
-			//return $this->render('GamingSchoolBundle:Default:profile.html.twig');
+			//return new Response('Mon profil');
+			return $this->render('GamingSchoolBundle:Default:profile.html.twig');
 		}
 	}
 

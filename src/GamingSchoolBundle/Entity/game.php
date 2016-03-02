@@ -30,6 +30,13 @@ class game
     private $gameName;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="game_logo_url", type="string", length=255, nullable=true)
+     */
+    private $gameLogoUrl;
+    
+    /**
     * @ORM\OneToMany(targetEntity="CoachingPack", mappedBy="coachingPackGameId", cascade={"persist", "remove", "merge"})
     */
     private $coaching_packs;
@@ -77,6 +84,31 @@ class game
     {
         return $this->gameName;
     }
+
+    /**
+     * Set gameLogoUrl
+     *
+     * @param string $gameLogoUrl
+     *
+     * @return game
+     */
+    public function setGameLogoUrl($gameLogoUrl)
+    {
+        $this->gameLogoUrl = $gameLogoUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get gameName
+     *
+     * @return string
+     */
+    public function getGameLogoUrl()
+    {
+        return $this->gameLogoUrl;
+    }
+    
     /**
      * Constructor
      */
