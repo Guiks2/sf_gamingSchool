@@ -1,3 +1,6 @@
+/*****************************************/
+/************** Base style ***************/
+/*****************************************/
 html,body {
 	margin: 0;
 	padding: 0;
@@ -69,7 +72,48 @@ ul li {
 	min-height: 500px;
 	background-color: whitesmoke;
 	margin-top: 20px;
+	font-family: 'Lato', sans-serif;
 }
+
+.hover-sliding {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 3px;
+}
+.hover-sliding:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    transition: width 0s ease, background .5s ease;
+}
+.hover-sliding:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background: black;
+    transition: width .5s ease;
+}
+.hover-sliding:hover:before {
+    width: 100%;
+    background: black;
+    transition: width .5s ease;
+}
+.hover-sliding:hover:after {
+    width: 100%;
+    background: transparent;
+    transition: all 0s ease;
+}
+/*****************************************/
+/*********** Index page style ************/
+/*****************************************/
 
 #indexBanner {
 	width: 100%;
@@ -79,7 +123,6 @@ ul li {
     background-position-y: 29%;
     color: whitesmoke;
     text-align: center;
-    font-family: 'Lato', sans-serif;
     display: table;
 }
 
@@ -99,4 +142,31 @@ ul li {
 #indexContainer {
 	width: 60%;
 	min-width: 800px;
+	margin: 0 auto;
+}
+
+/*****************************************/
+/********** Profile page style ***********/
+/*****************************************/
+
+#profileInfosContainer {
+	width: 60%;
+	min-width: 800px;
+	margin: 0 auto;
+}
+
+#fullWidthProfileZone {
+	width: 100%;
+	height: 200px;
+	background-color: #333;
+	color: whitesmoke;
+	text-align: center;
+	padding: 20px;
+}
+
+#profileProfilePic {
+	width: 100px;
+	height: 100px;
+	border: dashed 1px #BBB;
+	margin: 0 auto;
 }
