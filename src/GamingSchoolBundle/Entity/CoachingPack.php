@@ -36,18 +36,22 @@ class CoachingPack
     private $coachingPackPrice;
 
     /**
-     * @ORM\ManyToOne(targetEntity="game", inversedBy="coaching_pack")
+     * @ORM\ManyToOne(targetEntity="game", inversedBy="coaching_packs")
      * @ORM\JoinColumn(name="coaching_pack_game_id", referencedColumnName="id")
      */
     private $coachingPackGameId;
 
     /**
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="coaching_pack")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="coaching_pack")
      * @ORM\JoinColumn(name="coaching_pack_coach_id", referencedColumnName="id")
      */
     private $coachingPackCoachId;
 
-
+    /**
+    * @ORM\OneToMany(targetEntity="Selling", mappedBy="sellingPackId", cascade={"persist", "remove", "merge"})
+    */
+    private $selling_packs;
+    
     /**
      * Get id
      *
@@ -153,5 +157,45 @@ class CoachingPack
     {
         return $this->coachingPackCoachId;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->selling_packs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add sellingPack
+     *
+     * @param \GamingSchoolBundle\Entity\Selling $sellingPack
+     *
+     * @return CoachingPack
+     */
+    public function addSellingPack(\GamingSchoolBundle\Entity\Selling $sellingPack)
+    {
+        $this->selling_packs[] = $sellingPack;
+
+        return $this;
+    }
+
+    /**
+     * Remove sellingPack
+     *
+     * @param \GamingSchoolBundle\Entity\Selling $sellingPack
+     */
+    public function removeSellingPack(\GamingSchoolBundle\Entity\Selling $sellingPack)
+    {
+        $this->selling_packs->removeElement($sellingPack);
+    }
+
+    /**
+     * Get sellingPacks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSellingPacks()
+    {
+        return $this->selling_packs;
+    }
+}
