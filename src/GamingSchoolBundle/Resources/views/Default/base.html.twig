@@ -5,7 +5,8 @@
 		<meta charset="UTF-8" />
 
 		{% block stylesheets %}
-		 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+			<link href='https://fonts.googleapis.com/css?family=Lato:400,900,700' rel='stylesheet' type='text/css'>
+			<link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
         	<link rel="stylesheet" type="text/css" href="{{ asset('/bundles/gamingschool/css/index-style.css') }}" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
@@ -14,9 +15,20 @@
 	<body>
 		<header>
 			<div id="headerContainer">
-				<img src="{{ asset('/bundles/gamingschool/img/logo.png') }}" alt="GamingSchool" />
+				<a href="/"><img src="{{ asset('/bundles/gamingschool/img/logo.png') }}" alt="GamingSchool" /></a>
+				<ul>
+					<li><a href="#">NOS COACHS</a></li>
+					<li><a href="#">NOS JEUX</a></li>
+					<li><a href="#">A PROPOS DE NOUS</a></li>
+					<li>
+						<a href="login" id="loginLabel">
+							CONNEXION
+						</a>
+						<a href="#" id="signupLabel">
+							INSCRIPTION
+						</a>
+				</ul>
 			</div>
-			
 		</header>
 
 		<div id="mainContainer">
