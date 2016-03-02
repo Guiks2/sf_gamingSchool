@@ -38,7 +38,7 @@ class User extends BaseUser
      * @ORM\Column(name="user_lastname", type="string", length=30, nullable=true)
      */
     protected $userLastname;
-
+    /**
      * @ORM\Column(name="user_address", type="string", length=255, nullable=true)
      */
     protected $userAddress;
