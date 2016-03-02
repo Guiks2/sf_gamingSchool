@@ -22,12 +22,11 @@ class Boosting
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="boosting_game_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="game", inversedBy="boosting_games")
+     * @ORM\JoinColumn(name="boosting_game_id", referencedColumnName="id")
      */
     private $boostingGameId;
-
+    
     /**
      * @var string
      *
@@ -49,7 +48,11 @@ class Boosting
      */
     private $boostingCost;
 
-
+    /**
+    * @ORM\OneToMany(targetEntity="Selling", mappedBy="sellingBoostingId", cascade={"persist", "remove", "merge"})
+    */
+    private $selling_boostings;
+    
     /**
      * Get id
      *
@@ -155,5 +158,45 @@ class Boosting
     {
         return $this->boostingCost;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->selling_boostings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add sellingBoosting
+     *
+     * @param \GamingSchoolBundle\Entity\Selling $sellingBoosting
+     *
+     * @return Boosting
+     */
+    public function addSellingBoosting(\GamingSchoolBundle\Entity\Selling $sellingBoosting)
+    {
+        $this->selling_boostings[] = $sellingBoosting;
+
+        return $this;
+    }
+
+    /**
+     * Remove sellingBoosting
+     *
+     * @param \GamingSchoolBundle\Entity\Selling $sellingBoosting
+     */
+    public function removeSellingBoosting(\GamingSchoolBundle\Entity\Selling $sellingBoosting)
+    {
+        $this->selling_boostings->removeElement($sellingBoosting);
+    }
+
+    /**
+     * Get sellingBoostings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSellingBoostings()
+    {
+        return $this->selling_boostings;
+    }
+}

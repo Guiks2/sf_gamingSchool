@@ -22,23 +22,20 @@ class CoachingSold
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="coaching_sold_student_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="coaching_sold_students")
+     * @ORM\JoinColumn(name="coaching_sold_student_id", referencedColumnName="id")
      */
     private $coachingSoldStudentId;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="coaching_sold_coach_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="coaching_sold_coachs")
+     * @ORM\JoinColumn(name="coaching_sold_coach_id", referencedColumnName="id")
      */
     private $coachingSoldCoachId;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="coaching_sold_game_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="game", inversedBy="coaching_sold_games")
+     * @ORM\JoinColumn(name="coaching_sold_game_id", referencedColumnName="id")
      */
     private $coachingSoldGameId;
 
@@ -156,4 +153,3 @@ class CoachingSold
         return $this->coachingSoldNbHours;
     }
 }
-
