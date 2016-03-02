@@ -48,11 +48,19 @@ class DefaultController extends Controller
     }
 	
 	/**
-     * @Route("/profile", name="profile")
+     * @Route("/profile/user", name="userprofile")
      */
-    public function profileAction()
+    public function userProfileAction()
     {
 		return $this->render('GamingSchoolBundle:Default:profile.html.twig');
+    }
+
+    /**
+     * @Route("/profile/coach", name="coachprofile")
+     */
+    public function coachProfileAction()
+    {
+		return $this->render('GamingSchoolBundle:Default:coach.html.twig');
     }
 	
 	function checkIsConnected(){
