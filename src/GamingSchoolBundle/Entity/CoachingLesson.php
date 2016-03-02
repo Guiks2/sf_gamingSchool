@@ -22,16 +22,14 @@ class CoachingLesson
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="coaching_lesson_student_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="coaching_lesson_students")
+     * @ORM\JoinColumn(name="coaching_lesson_student_id", referencedColumnName="id")
      */
     private $coachingLessonStudentId;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="coaching_lesson_coach_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="coaching_lesson_coachs")
+     * @ORM\JoinColumn(name="coaching_lesson_coach_id", referencedColumnName="id")
      */
     private $coachingLessonCoachId;
 
@@ -156,4 +154,3 @@ class CoachingLesson
         return $this->coachingLessonDateEnding;
     }
 }
-

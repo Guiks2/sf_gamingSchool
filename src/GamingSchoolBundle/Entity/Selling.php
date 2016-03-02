@@ -22,33 +22,29 @@ class Selling
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="selling_student_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="selling_students")
+     * @ORM\JoinColumn(name="selling_student_id", referencedColumnName="id")
      */
     private $sellingStudentId;
-
+    
     /**
-     * @var int
-     *
-     * @ORM\Column(name="selling_coach_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="selling_coachs")
+     * @ORM\JoinColumn(name="selling_coach_id", referencedColumnName="id")
      */
     private $sellingCoachId;
-
+    
     /**
-     * @var int
-     *
-     * @ORM\Column(name="selling_pack_id", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="CoachingPack", inversedBy="selling_packs")
+     * @ORM\JoinColumn(name="selling_pack_id", referencedColumnName="id")
      */
     private $sellingPackId;
-
+    
     /**
-     * @var int
-     *
-     * @ORM\Column(name="selling_boosting_id", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Boosting", inversedBy="selling_boostings")
+     * @ORM\JoinColumn(name="selling_boosting_id", referencedColumnName="id")
      */
     private $sellingBoostingId;
-
+    
     /**
      * @var float
      *
@@ -218,4 +214,3 @@ class Selling
         return $this->sellingDate;
     }
 }
-
