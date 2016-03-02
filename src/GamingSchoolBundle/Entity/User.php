@@ -46,12 +46,6 @@ class User extends BaseUser
     protected $userLastname;
 
     /**
-     * @ORM\ManyToOne(targetEntity="statut", inversedBy="user")
-     * @ORM\JoinColumn(name="user_statut", referencedColumnName="id")
-     */
-    protected $userStatut;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="user_email", type="string", length=255)
@@ -218,30 +212,6 @@ class User extends BaseUser
     public function getUserLastname()
     {
         return $this->userLastname;
-    }
-
-    /**
-     * Set userStatut
-     *
-     * @param string $userStatut
-     *
-     * @return User
-     */
-    public function setUserStatut($userStatut)
-    {
-        $this->userStatut = $userStatut;
-
-        return $this;
-    }
-
-    /**
-     * Get userStatut
-     *
-     * @return int
-     */
-    public function getUserStatut()
-    {
-        return $this->userStatut;
     }
 
     /**
