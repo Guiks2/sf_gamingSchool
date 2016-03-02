@@ -63,7 +63,7 @@ class DefaultController extends Controller
 	/**
      * @Route("/profile/user", name="userprofile")
      */
-    public function profileAction(Request $request)
+    public function userProfileAction(Request $request)
     {
 		$connected = $this->checkIsConnected($request);
 		if (!$connected){
@@ -72,6 +72,12 @@ class DefaultController extends Controller
 			return new Response('Mon profil');
 			//return $this->render('GamingSchoolBundle:Default:profile.html.twig');
 		}
+	}
+
+	/**
+     * @Route("/profile/coach", name="coachprofile")
+     */
+    public function coachProfileAction(Request $request)
     {
 		return $this->render('GamingSchoolBundle:Default:coach.html.twig');
     }
