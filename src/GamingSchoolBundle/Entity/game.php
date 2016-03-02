@@ -92,7 +92,7 @@ class game
      *
      * @return game
      */
-    public function setGameLogoUrl($gameName)
+    public function setGameLogoUrl($gameLogoUrl)
     {
         $this->gameLogoUrl = $gameLogoUrl;
 
