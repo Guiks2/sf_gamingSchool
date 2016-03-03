@@ -284,6 +284,16 @@ ul#mainMenu a {
 	text-align: left;
 }
 
+/*****************************************/
+/*********** Coach page style ************/
+/*****************************************/
+
+#coachInfosContainer {
+	width: 60%;
+	min-width: 800px;
+	margin: 0 auto;
+}
+
 #select_pack_selectPack{
 	display: block!important;
 }
