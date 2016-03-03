@@ -30,4 +30,5 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/profile, role: ROLE_USER }
         - { path: ^/edit-lesson, role: ROLE_COACH }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        # remettre ROLE_ADMIN
+        - { path: ^/admin/, role: IS_AUTHENTICATED_ANONYMOUSLY }

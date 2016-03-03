@@ -76,3 +76,7 @@ fos_user:
     registration:
         form:
             type: GamingSchoolBundle\Form\RegistrationType
+
+easy_admin:
+    entities:
+        - GamingSchoolBundle\Entity\User
