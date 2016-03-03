@@ -67,7 +67,7 @@ class UserController extends Controller
     }
     
     /**
-     * @Route("/profile/coach/{coach_id}")
+     * @Route("/profile/coach/{coach_id}", name="coachprofile")
      */
     public function coachByIdAction($coach_id, Request $request)
     {

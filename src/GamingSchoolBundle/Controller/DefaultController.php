@@ -2,6 +2,9 @@
 
 namespace GamingSchoolBundle\Controller;
 
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Model\UserInterface;
 use GamingSchoolBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -13,7 +16,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="index")
      */
     public function indexAction()
     {
@@ -22,7 +25,7 @@ class DefaultController extends Controller
 		  ->getManager()
 		  ->getRepository('GamingSchoolBundle:game')
 		;
-
+		
 		$listGames = $repository->findAll();
 
 		foreach ($listGames as $game) {
