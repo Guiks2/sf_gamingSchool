@@ -17,7 +17,23 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('GamingSchoolBundle:Default:index.html.twig');
+    	$repository = $this
+		  ->getDoctrine()
+		  ->getManager()
+		  ->getRepository('GamingSchoolBundle:game')
+		;
+
+		$listGames = $repository->findAll();
+
+		foreach ($listGames as $game) {
+		  	// $advert est une instance de Advert
+			$data["listGames"][] = array(
+				'id' => $game->getId(),
+			 	'name' => $game->getGameName(),
+			 	'logo' => $game->getGameLogoUrl()
+			);
+		}
+        return $this->render('GamingSchoolBundle:Default:index.html.twig', $data);
     }
 	
 	
@@ -70,12 +86,12 @@ class DefaultController extends Controller
     public function userProfileAction(Request $request)
     {
 		$connected = $this->checkIsConnected($request);
-		if (!$connected){
+		/*if (!$connected){
 			return new RedirectResponse('login');
-		} else {
+		} else {*/
 			//return new Response('Mon profil');
 			return $this->render('GamingSchoolBundle:Default:profile.html.twig');
-		}
+		/*}*/
 	}
 
 	/**
