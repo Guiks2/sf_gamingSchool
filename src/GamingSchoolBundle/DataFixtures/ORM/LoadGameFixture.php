@@ -23,18 +23,19 @@ class LoadGameFixture extends AbstractFixture implements OrderedFixtureInterface
     function load(ObjectManager $manager)
     {
         $games = array(
-            array('name' => 'League of Legends', 'logo' => ''),
-            array('name' => 'Counter Strike : Global Offensive', 'logo' => ''),
-            array('name' => 'Hearthstone', 'logo' => ''),
-            array('name' => 'Starcraft II', 'logo' => ''),
-            array('name' => 'World of Warcraft', 'logo' => ''),
-            array('name' => 'DotA 2', 'logo' => ''),
+            array('name' => 'League of Legends', 'logo' => '', 'slug' => 'league-of-legends'),
+            array('name' => 'Counter Strike : Global Offensive', 'logo' => '', 'slug' => 'counter-strike-go'),
+            array('name' => 'Hearthstone', 'logo' => '', 'slug' => 'hearthstone'),
+            array('name' => 'Starcraft II', 'logo' => '', 'slug' => 'starcraft-2'),
+            array('name' => 'World of Warcraft', 'logo' => '', 'slug' => 'world-of-warcraft'),
+            array('name' => 'DotA 2', 'logo' => '', 'slug' => 'dota-2'),
         );
         $i = 0;
         foreach ($games as $g) {
             $game = new Game();
             $game->setGameName($g['name']);
             $game->setGameLogoUrl($g['logo']);
+            $game->setGameSlug($g['slug']);
             $manager->persist($game);
             $this->addReference('game'.$i, $game);     
             $i++;                             

@@ -30,7 +30,7 @@ class DefaultController extends Controller
 			$data["listGames"][] = array(
 				'id' => $game->getId(),
 			 	'name' => $game->getGameName(),
-			 	'logo' => $game->getGameLogoUrl()
+			 	'slug' => $game->getGameSlug()
 			);
 		}
         return $this->render('GamingSchoolBundle:Default:index.html.twig', $data);

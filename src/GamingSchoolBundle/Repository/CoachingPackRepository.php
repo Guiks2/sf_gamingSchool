@@ -10,4 +10,11 @@ namespace GamingSchoolBundle\Repository;
  */
 class CoachingPackRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findCoachingPackByCoach($coach)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb->where('cp.coachingPackCoachId = :coach')
+            ->setParameter('coach', $coach);
+        return $qb->getQuery()->getResult();
+    }
 }
