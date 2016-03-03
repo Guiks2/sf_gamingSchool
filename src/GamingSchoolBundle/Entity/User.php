@@ -468,4 +468,14 @@ class User extends BaseUser
     {
         return $this->coaching_lesson_coachs;
     }
+
+     public function getExpiresAt()
+     {
+        return $this->expiresAt;
+     }
+
+     public function getCredentialsExpireAt()
+     {
+         return $this->credentialsExpireAt;
+     }
 }
