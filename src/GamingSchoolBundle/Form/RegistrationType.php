@@ -17,8 +17,8 @@ class RegistrationType extends AbstractType
 			->add('email', emailType, array('label' => 'eMail'))
 			->add('userfirstname', textType, array('label' => 'Prénom'))
 			->add('userLastname', textType, array('label' => 'Nom'))
-			->add('userAddress', textType, array('label' => 'Adresse'))
-			->add('userPhone', textType, array('label' => 'Téléphone'))
+			->add('userAddress', textType, array('label' => 'Adresse', 'required' => ''))
+			->add('userPhone', textType, array('label' => 'Téléphone', 'required' => ''))
 		;
 	}
 	

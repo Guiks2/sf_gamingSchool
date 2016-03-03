@@ -10,8 +10,14 @@
 	    <h3>Coach Name</h3>
 	    <h4>Coach depuis le 02 Mars 2016</h4>
 	</div>
-
     <div id="profileInfosContainer">
-    	
     </div>
+    
+    <div>
+	    <form method="post">
+		    {{ form_widget(form.selectPack) }}
+		    {{ form_widget(form.save) }}
+		</form>
+    </div>
+    
 {% endblock %}

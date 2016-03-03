@@ -38,6 +38,7 @@ class User extends BaseUser
      * @ORM\Column(name="user_lastname", type="string", length=30, nullable=true)
      */
     protected $userLastname;
+	
     /**
      * @ORM\Column(name="user_address", type="string", length=255, nullable=true)
      */
@@ -45,7 +46,10 @@ class User extends BaseUser
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+	 *     min=10,
+	 *     minMessage="Le numéro de téléphone doit contenir au moins {{ limit }} caratères."
+	 * )
      * @ORM\Column(name="user_phone", type="string", length=20, nullable=true)
      */
     protected $userPhone;
