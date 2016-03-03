@@ -177,6 +177,29 @@ ul#mainMenu a {
 
 #indexContent a{
 	color: whitesmoke!important;
+	margin-top: 40px;
+}
+
+#indexContent .col.s4 {
+	display: table;
+	border-collapse: separate;
+ 	border-spacing: 10px;
+}
+
+.gameName {
+	height: 100px;
+	box-sizing: border-box;
+	background-color: rgba(0, 0, 0, 0.5);
+	margin-bottom: 20px;
+	font-family: 'Oswald', sans-serif;
+	font-size: 26px;
+	text-transform: uppercase;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#indexContent a:hover {
+	color: #fbb03b!important;
 }
 
 /*****************************************/
