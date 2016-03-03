@@ -22,13 +22,21 @@
 					<li><a href="#" class="hover-sliding">NOS JEUX</a></li>
 					<li><a href="#" class="hover-sliding">A PROPOS DE NOUS</a></li>
 					<li>
-						<a href="login" id="loginLabel">
-							CONNEXION
-						</a>
-						<a href="register" id="signupLabel">
-							INSCRIPTION
-						</a>
+						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				            <a style="color: #fbb03b" href="{{ path('fos_user_security_logout') }}">
+				                {{ 'SE DÉCONNECTER'|trans({}, 'FOSUserBundle') }}
+				            </a>
+				        {% else %}
+				        	<a href="/login" id="loginLabel">
+								CONNEXION
+							</a>
+							<a href="/register" id="signupLabel">
+								INSCRIPTION
+							</a>
+						{% endif %}
+					</li>
 				</ul>
+
 			</div>
 		</header>
 
