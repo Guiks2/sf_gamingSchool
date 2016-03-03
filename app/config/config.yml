@@ -78,7 +78,27 @@ fos_user:
             type: GamingSchoolBundle\Form\RegistrationType
 
 easy_admin:
+    design:
+        brand_color: 'orange'
     entities:
-        - GamingSchoolBundle\Entity\User
+        User:
+            class: GamingSchoolBundle\Entity\User
+            label: 'Utilisateurs'
+            list:
+                title: 'Liste des Utilisateurs'
+                fields:
+                    - id
+                    - username
+                    - { property: 'userLastName', label: 'Nom' }
+                    - { property: 'userfirstname', label: 'Prénom' }
+                    - { property: 'userAddress', label: 'Adresse' }
+                    - { property: 'userPhone', label: 'Téléphone' }
+                    - enabled
+                    - { property: 'lastLogin', label: 'Dernière connexion' }
+    list:
+        actions:
+            - { name: 'show', label: 'Détails' }
+            - { name: 'edit', label: 'Modifier' }
+            - { name: 'delete', label: 'Supprimer' }
     site_name: 'GamingSchool'
 
