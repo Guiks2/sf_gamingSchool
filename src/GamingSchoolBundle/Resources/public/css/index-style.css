@@ -239,6 +239,7 @@ ul#mainMenu a {
 	width: 60%;
 	min-width: 800px;
 	margin: 0 auto;
+	text-align: center;
 }
 
 #fullWidthListZone {
@@ -279,4 +280,5 @@ ul#mainMenu a {
 .collapsible-body {
 	color: whitesmoke!important;
 	background-color: #555!important;
+	text-align: left;
 }

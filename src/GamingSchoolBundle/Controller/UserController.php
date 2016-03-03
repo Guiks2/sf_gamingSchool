@@ -34,7 +34,6 @@ class UserController extends Controller
 		$data["game"] = $game->getGameName();
 
 		foreach ($listCoaches as $coach) {
-		  	// $advert est une instance de Advert
 			$data["listCoaches"][] = array(
 				'id' => $coach->getId(),
 			 	'username' => $coach->getUsername(),
@@ -45,4 +44,24 @@ class UserController extends Controller
 		}
         return $this->render('GamingSchoolBundle:Default:listcoaches.html.twig', $data);
     }
+
+    /**
+     * @Route("/profile/user/{user_id}", name="userprofile")
+     */
+    public function userProfileAction(Request $request, $user_id)
+    {
+    	$userRepository = $this
+		  ->getDoctrine()
+		  ->getManager()
+		  ->getRepository('GamingSchoolBundle:User')
+		;
+
+		$infosUser = $userRepository->find($user_id);
+		$data["infos"] = $infosUser;
+		
+		if($infosUser->hasRole('ROLE_COACH'))
+			return $this->redirect('/profile/coach/'.$user_id.'');
+		else if($infosUser->hasRole('ROLE_USER'))
+			return $this->render('GamingSchoolBundle:Default:profile.html.twig', $data);
+	}
 }
