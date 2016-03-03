@@ -79,26 +79,6 @@ class DefaultController extends Controller
         return new Response('Page d\'inscription');
 		//return $this->render('GamingSchoolBundle:Default:subscribe.html.twig');
     }
-	
-	/**
-     * @Route("/profile/user/{user_id}", name="userprofile")
-     */
-    public function userProfileAction(Request $request, $user_id)
-    {
-    	$userRepository = $this
-		  ->getDoctrine()
-		  ->getManager()
-		  ->getRepository('GamingSchoolBundle:User')
-		;
-
-		$infosUser = $userRepository->find($user_id);
-		$data["infos"] = $infosUser;
-		
-		if($infosUser->hasRole('ROLE_COACH'))
-			return $this->redirect('/profile/coach/'.$user_id.'');
-		else if($infosUser->hasRole('ROLE_USER'))
-			return $this->render('GamingSchoolBundle:Default:profile.html.twig', $data);
-	}
 
 	/**
      * @Route("/profile/coach", name="coachprofile")
