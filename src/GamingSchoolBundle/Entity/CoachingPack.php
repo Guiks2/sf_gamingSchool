@@ -22,6 +22,15 @@ class CoachingPack
     private $id;
 
     /**
+     * toString
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId();
+    }
+
+    /**
      * @var int
      *
      * @ORM\Column(name="coaching_pack_nb_hours", type="integer")

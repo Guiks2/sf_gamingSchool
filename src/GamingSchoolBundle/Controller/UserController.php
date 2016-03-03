@@ -14,9 +14,9 @@ use GamingSchoolBundle\Entity\Selling;
 class UserController extends Controller
 {
     /**
-     * @Route("/coaches/{game_id}")
+     * @Route("/coaches/{game_slug}", name="game")
      */
-    public function coachesByGameAction($game_id)
+    public function coachesByGameAction($game_slug)
     {
     	$userRepository = $this
 		  ->getDoctrine()
@@ -30,25 +30,27 @@ class UserController extends Controller
 		  ->getRepository('GamingSchoolBundle:game')
 		;
 
-
-		$listCoaches = $userRepository->findByCoaches($game_id);
-		$game = $gameRepository->find($game_id);
+		$game = $gameRepository->findOneBy(array('gameSlug' => $game_slug));
+		$listCoaches = $userRepository->findByCoaches($game->getId());
 		$data["game"] = $game->getGameName();
 
 		foreach ($listCoaches as $coach) {
-		  	// $advert est une instance de Advert
 			$data["listCoaches"][] = array(
 				'id' => $coach->getId(),
-			 	'name' => $coach->getUsername()
+			 	'username' => $coach->getUsername(),
+			 	'firstname' => $coach->getUserFirstName(),
+			 	'lastname' => $coach ->getUserLastName(),
+			 	'email' => $coach->getEmail()
 			);
 		}
         return $this->render('GamingSchoolBundle:Default:listcoaches.html.twig', $data);
     }
-    
     /**
      * @Route("/profile/coach/{coach_id}")
+     * @Route("/profile/user/{user_id}", name="userprofile")
      */
     public function coachByIdAction($coach_id, Request $request)
+    public function userProfileAction(Request $request, $user_id)
     {
         $userRepository = $this
           ->getDoctrine()
@@ -64,6 +66,20 @@ class UserController extends Controller
                 'nb_hours' => $pack->getCoachingPackNbHours(),
                 'price' => $pack->getCoachingPackPrice(),
             );
+    	$userRepository = $this
+		  ->getDoctrine()
+		  ->getManager()
+		  ->getRepository('GamingSchoolBundle:User')
+		;
+
+		$infosUser = $userRepository->find($user_id);
+		$data["infos"] = $infosUser;
+		
+		if($infosUser->hasRole('ROLE_COACH'))
+			return $this->redirect('/profile/coach/'.$user_id.'');
+		else if($infosUser->hasRole('ROLE_USER'))
+			return $this->render('GamingSchoolBundle:Default:profile.html.twig', $data);
+	}
         }
         $form = $this->createForm(SelectPack::Class, $data["packs"])->createView();
         

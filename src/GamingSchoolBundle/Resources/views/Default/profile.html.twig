@@ -5,10 +5,9 @@
 {% block content %}
 <div id="fullWidthProfileZone">
 	<div id="profileProfilePic">
-
+		<img src="{{ asset('/bundles/gamingschool/img/default-avatar.jpg') }}"/>
 	</div>
-	<h5>User Name</h5>
-	<h6>User Stuff</h6>
+	<h5>{{ infos.username }}</h5>
 </div>
 
 <div class="container" id="profileInfosContainer">
@@ -17,8 +16,8 @@
 			<div class="col s12">
 				<div class="card darken-1">
 					<div class="card-content">
-						<span class="card-title">Informations</span>
-						<p>Afficher ici les informations du joueur<br>Pseudos dans les différents jeux selon les informations qu'il aura renseigné sur son profil</p>
+						<span class="card-title">Présentation</span>
+						<p>Bonjour, je suis un profil utilisateur lambda. Je joue aux jeux vidéo et j'utilise la plateforme GamingSchool afin de trouver des coachs qui pourront m'aider à progresser dans mes jeux préférés.
 					</div>
 				</div>
 			</div>
@@ -28,8 +27,11 @@
 			<div class="col s12 m6">
 				<div class="card darken-1">
 					<div class="card-content">
-						<span class="card-title">Dernières leçons</span>
-						<p>Afficher ici la liste des 5 dernières leçons prises par le joueur ainsi que le coach et le jeu correspondant.</p>
+						<span class="card-title">Informations</span>
+						<p><b>Nom utilisateur: </b>{{infos.username }}<br>
+						<b>Prénom: </b>{{ infos.userFirstName }}<br>
+						<b>Adresse: </b>{{ infos.userAddress }}<br>
+						<b>Email: </b>{{ infos.email }}</p>
 					</div>
 				</div>
 			</div>
@@ -37,8 +39,8 @@
 			<div class="col s12 m6">
 				<div class="card darken-1">
 					<div class="card-content">
-						<span class="card-title">Commentaires</span>
-						<p>Afficher ici les derniers commentaires laissés par le joueur à l'attention de ses coachs.</p>
+						<span class="card-title">Dernières leçons</span>
+						<p>Afficher ici les dernières leçons prises par l'utilisateur</p>
 					</div>
 				</div>
 			</div>

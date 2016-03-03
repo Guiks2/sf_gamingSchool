@@ -1,5 +1,6 @@
 {% extends "GamingSchoolBundle:Default:base.html.twig" %}
 
+{% block title %}Accueil{% endblock %}
 {% block content %}
 	<div id="indexBanner">
 	</div>
@@ -11,9 +12,16 @@
 		<div id="indexContent" style="color: whitesmoke;">
 			{% for game in listGames %}
 			<div class="gameName">
+			<div class="row">
+				{% for game in listGames %}
+				<div class="col s4">
+					<div class="gameName">
 				<a href="/coaches/{{ game.id }}">{{ game.name }}</a>
+						<a href="{{ path('game', {'game_slug': game.slug}) }}">{{ game.name }}</a>
+					</div>
+				</div>
+				{% endfor %}
 			</div>
-			{% endfor %}
 		</div>
 		
 	</div>
