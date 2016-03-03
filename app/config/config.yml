@@ -93,6 +93,7 @@ easy_admin:
                     - { property: 'userfirstname', label: 'Prénom' }
                     - { property: 'userAddress', label: 'Adresse' }
                     - { property: 'userPhone', label: 'Téléphone' }
+                    - { property: 'userSold', label: 'Crédits' }
                     - enabled
                     - { property: 'lastLogin', label: 'Dernière connexion' }
     list:
