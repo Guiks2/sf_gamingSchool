@@ -3,8 +3,35 @@
 {% block title %}{{ game }}{% endblock %}
 
 {% block content %}
-    <div id="listCoachesContainer">
-    	<h1>{{ game }}</h1>
-    	{{ listCoaches|json_encode() }}
-    </div>
+<div id="fullWidthListZone">
+	<h5>Nos coaches</h5>
+	<h3>{{ game }}</h3>
+</div>
+
+<div id="listCoachesContainer">
+	<ul class="collapsible" data-collapsible="accordion">
+		{% for coach in listCoaches %}
+			<li>
+				<div class="collapsible-header">
+					<div class="listCoachProfilePic">
+					</div>
+					<b style="text-transform: uppercase">{{ coach.username }}</b> - {{ coach.firstname }} {{ coach.lastname }}
+
+					<a class="viewProfileButton waves-effect waves-light btn" href="/profile/coach/{{ coach.id }}">Voir le profil</a>
+				</div>
+				<div class="collapsible-body">
+					<p><b>Mail: </b> {{ coach.email }}</p>
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		$(".viewProfileButton").on("click", function(e){
+			e.stopPropagation();
+		});
+	</script>
 {% endblock %}
