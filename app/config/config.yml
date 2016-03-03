@@ -80,3 +80,5 @@ fos_user:
 easy_admin:
     entities:
         - GamingSchoolBundle\Entity\User
+    site_name: 'GamingSchool'
+
