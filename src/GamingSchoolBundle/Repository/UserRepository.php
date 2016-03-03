@@ -10,4 +10,13 @@ namespace GamingSchoolBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findByCoaches($game)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb->distinct()
+        	->leftJoin('GamingSchoolBundle:CoachingPack', 'cp', 'WITH', 'cp.coachingPackCoachId = u.id')
+        	->where('cp.coachingPackGameId = :game')
+        	->setParameter('game', $game);
+        return $qb->getQuery()->getResult();
+    }
 }

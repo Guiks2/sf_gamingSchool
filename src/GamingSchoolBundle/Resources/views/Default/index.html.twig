@@ -7,8 +7,15 @@
 	<div id="indexCatch">
 		<h2>Bienvenue sur <b>GamingSchool</b> !</h2>
 		<h3>Votre plateforme de coaching eSport</h3>
+		
+		<div id="indexContent" style="color: whitesmoke;">
+			{% for game in listGames %}
+			<div class="gameName">
+				<a href="/game/{{ game.id }}">{{ game.name }}</a>
+			</div>
+			{% endfor %}
+		</div>
+		
 	</div>
 
-	<div id="indexContainer">
-	</div>
 {% endblock %}

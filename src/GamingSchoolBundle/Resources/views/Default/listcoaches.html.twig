@@ -1,0 +1,10 @@
+{% extends "GamingSchoolBundle:Default:base.html.twig" %}
+
+{% block title %}{{ game }}{% endblock %}
+
+{% block content %}
+    <div id="listCoachesContainer">
+    	<h1>{{ game }}</h1>
+    	{{ listCoaches|json_encode() }}
+    </div>
+{% endblock %}
