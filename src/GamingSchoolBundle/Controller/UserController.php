@@ -37,7 +37,10 @@ class UserController extends Controller
 		  	// $advert est une instance de Advert
 			$data["listCoaches"][] = array(
 				'id' => $coach->getId(),
-			 	'name' => $coach->getUsername()
+			 	'username' => $coach->getUsername(),
+			 	'firstname' => $coach->getUserFirstName(),
+			 	'lastname' => $coach ->getUserLastName(),
+			 	'email' => $coach->getEmail()
 			);
 		}
         return $this->render('GamingSchoolBundle:Default:listcoaches.html.twig', $data);
