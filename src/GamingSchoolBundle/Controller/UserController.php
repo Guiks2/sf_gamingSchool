@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use GamingSchoolBundle\Form\SelectPack;
+use GamingSchoolBundle\Entity\Selling;
 
 class UserController extends Controller
 {
@@ -47,7 +48,7 @@ class UserController extends Controller
     /**
      * @Route("/profile/coach/{coach_id}")
      */
-    public function coachByIdAction($coach_id)
+    public function coachByIdAction($coach_id, Request $request)
     {
         $userRepository = $this
           ->getDoctrine()
@@ -64,8 +65,17 @@ class UserController extends Controller
                 'price' => $pack->getCoachingPackPrice(),
             );
         }
-        $data['form'] = $this->createForm(SelectPack::Class, $data["packs"])->createView();
+        $form = $this->createForm(SelectPack::Class, $data["packs"])->createView();
         
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()){
+            $em = $this->get('doctrine')->getManager();
+            
+            $selling = new Selling();
+            $em->persist($selling);
+            $em->flush();
+        }
         /*$data['form']->handleRequest($_REQUEST);
         if ($data['form']->isSubmitted() && $data['form']->isValid()) {
         // ... perform some action, such as saving the task to the database
@@ -73,7 +83,10 @@ class UserController extends Controller
             return $this->redirectToRoute('task_success');
         }*/
         
+        $data['form'] = $form;
         return $this->render('GamingSchoolBundle:Default:coach.html.twig', $data);
     }
+
+    
 }
 
