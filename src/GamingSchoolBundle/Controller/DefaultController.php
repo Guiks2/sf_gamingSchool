@@ -81,17 +81,23 @@ class DefaultController extends Controller
     }
 	
 	/**
-     * @Route("/profile/user", name="userprofile")
+     * @Route("/profile/user/{user_id}", name="userprofile")
      */
-    public function userProfileAction(Request $request)
+    public function userProfileAction(Request $request, $user_id)
     {
-		$connected = $this->checkIsConnected($request);
-		/*if (!$connected){
-			return new RedirectResponse('login');
-		} else {*/
-			//return new Response('Mon profil');
-			return $this->render('GamingSchoolBundle:Default:profile.html.twig');
-		/*}*/
+    	$userRepository = $this
+		  ->getDoctrine()
+		  ->getManager()
+		  ->getRepository('GamingSchoolBundle:User')
+		;
+
+		$infosUser = $userRepository->find($user_id);
+		$data["infos"] = $infosUser;
+		
+		if($infosUser->hasRole('ROLE_COACH'))
+			return $this->redirect('/profile/coach/'.$user_id.'');
+		else if($infosUser->hasRole('ROLE_USER'))
+			return $this->render('GamingSchoolBundle:Default:profile.html.twig', $data);
 	}
 
 	/**
