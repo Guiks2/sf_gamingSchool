@@ -14,7 +14,7 @@
 				{% for game in listGames %}
 				<div class="col s4">
 					<div class="gameName">
-						<a href="/coaches/{{ game.id }}">{{ game.name }}</a>
+						<a href="{{ path('game', {'game_slug': game.slug}) }}">{{ game.name }}</a>
 					</div>
 				</div>
 				{% endfor %}

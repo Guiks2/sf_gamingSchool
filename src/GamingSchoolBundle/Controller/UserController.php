@@ -12,9 +12,9 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class UserController extends Controller
 {
     /**
-     * @Route("/coaches/{game_id}")
+     * @Route("/coaches/{game_slug}", name="game")
      */
-    public function coachesByGameAction($game_id)
+    public function coachesByGameAction($game_slug)
     {
     	$userRepository = $this
 		  ->getDoctrine()
@@ -28,9 +28,8 @@ class UserController extends Controller
 		  ->getRepository('GamingSchoolBundle:game')
 		;
 
-
-		$listCoaches = $userRepository->findByCoaches($game_id);
-		$game = $gameRepository->find($game_id);
+		$game = $gameRepository->findOneBy(array('gameSlug' => $game_slug));
+		$listCoaches = $userRepository->findByCoaches($game->getId());
 		$data["game"] = $game->getGameName();
 
 		foreach ($listCoaches as $coach) {
