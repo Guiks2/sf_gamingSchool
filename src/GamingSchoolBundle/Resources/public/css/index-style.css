@@ -205,3 +205,7 @@ ul li {
 #profileInfo {
 
 }
+
+#select_pack_selectPack{
+	display: block!important;
+}
