@@ -9,11 +9,15 @@
 		<h3>Votre plateforme de coaching eSport</h3>
 		
 		<div id="indexContent" style="color: whitesmoke;">
-			{% for game in listGames %}
-			<div class="gameName">
-				<a href="/game/{{ game.id }}">{{ game.name }}</a>
+			<div class="row">
+				{% for game in listGames %}
+				<div class="col s4">
+					<div class="gameName">
+						<a href="/game/{{ game.id }}">{{ game.name }}</a>
+					</div>
+				</div>
+				{% endfor %}
 			</div>
-			{% endfor %}
 		</div>
 		
 	</div>
