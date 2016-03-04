@@ -3,10 +3,9 @@
 namespace GamingSchoolBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * game
+ * game.
  *
  * @ORM\Table(name="game")
  * @ORM\Entity(repositoryClass="GamingSchoolBundle\Repository\gameRepository")
@@ -35,7 +34,7 @@ class game
      * @ORM\Column(name="game_logo_url", type="string", length=255, nullable=true)
      */
     private $gameLogoUrl;
-    
+
     /**
      * @var string
      *
@@ -44,22 +43,22 @@ class game
     private $gameSlug;
 
     /**
-    * @ORM\OneToMany(targetEntity="CoachingPack", mappedBy="coachingPackGameId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="CoachingPack", mappedBy="coachingPackGameId", cascade={"persist", "remove", "merge"})
+     */
     private $coaching_packs;
 
     /**
-    * @ORM\OneToMany(targetEntity="Boosting", mappedBy="boostingGameId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="Boosting", mappedBy="boostingGameId", cascade={"persist", "remove", "merge"})
+     */
     private $boosting_games;
 
     /**
-    * @ORM\OneToMany(targetEntity="CoachingSold", mappedBy="coachingSoldGameId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="CoachingSold", mappedBy="coachingSoldGameId", cascade={"persist", "remove", "merge"})
+     */
     private $coaching_sold_games;
-        
+
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -69,7 +68,7 @@ class game
     }
 
     /**
-     * Set gameName
+     * Set gameName.
      *
      * @param string $gameName
      *
@@ -83,7 +82,7 @@ class game
     }
 
     /**
-     * Get gameName
+     * Get gameName.
      *
      * @return string
      */
@@ -93,7 +92,7 @@ class game
     }
 
     /**
-     * Set gameLogoUrl
+     * Set gameLogoUrl.
      *
      * @param string $gameLogoUrl
      *
@@ -107,7 +106,7 @@ class game
     }
 
     /**
-     * Get gameGameLogoUrl
+     * Get gameGameLogoUrl.
      *
      * @return string
      */
@@ -115,10 +114,9 @@ class game
     {
         return $this->gameLogoUrl;
     }
-    
 
     /**
-     * Set gameSlug
+     * Set gameSlug.
      *
      * @param string $gameSlug
      *
@@ -132,7 +130,7 @@ class game
     }
 
     /**
-     * Get gameSlug
+     * Get gameSlug.
      *
      * @return string
      */
@@ -142,7 +140,7 @@ class game
     }
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -150,7 +148,7 @@ class game
     }
 
     /**
-     * Add coachingPack
+     * Add coachingPack.
      *
      * @param \GamingSchoolBundle\Entity\CoachingPack $coachingPack
      *
@@ -164,7 +162,7 @@ class game
     }
 
     /**
-     * Remove coachingPack
+     * Remove coachingPack.
      *
      * @param \GamingSchoolBundle\Entity\CoachingPack $coachingPack
      */
@@ -174,7 +172,7 @@ class game
     }
 
     /**
-     * Get coachingPacks
+     * Get coachingPacks.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -184,7 +182,7 @@ class game
     }
 
     /**
-     * Add boostingGame
+     * Add boostingGame.
      *
      * @param \GamingSchoolBundle\Entity\Boosting $boostingGame
      *
@@ -198,7 +196,7 @@ class game
     }
 
     /**
-     * Remove boostingGame
+     * Remove boostingGame.
      *
      * @param \GamingSchoolBundle\Entity\Boosting $boostingGame
      */
@@ -208,7 +206,7 @@ class game
     }
 
     /**
-     * Get boostingGames
+     * Get boostingGames.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -218,7 +216,7 @@ class game
     }
 
     /**
-     * Add coachingSoldGame
+     * Add coachingSoldGame.
      *
      * @param \GamingSchoolBundle\Entity\CoachingSold $coachingSoldGame
      *
@@ -232,7 +230,7 @@ class game
     }
 
     /**
-     * Remove coachingSoldGame
+     * Remove coachingSoldGame.
      *
      * @param \GamingSchoolBundle\Entity\CoachingSold $coachingSoldGame
      */
@@ -242,7 +240,7 @@ class game
     }
 
     /**
-     * Get coachingSoldGames
+     * Get coachingSoldGames.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

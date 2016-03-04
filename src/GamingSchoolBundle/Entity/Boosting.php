@@ -5,7 +5,7 @@ namespace GamingSchoolBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Boosting
+ * Boosting.
  *
  * @ORM\Table(name="boosting")
  * @ORM\Entity(repositoryClass="GamingSchoolBundle\Repository\BoostingRepository")
@@ -26,7 +26,7 @@ class Boosting
      * @ORM\JoinColumn(name="boosting_game_id", referencedColumnName="id")
      */
     private $boostingGameId;
-    
+
     /**
      * @var string
      *
@@ -49,12 +49,12 @@ class Boosting
     private $boostingCost;
 
     /**
-    * @ORM\OneToMany(targetEntity="Selling", mappedBy="sellingBoostingId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="Selling", mappedBy="sellingBoostingId", cascade={"persist", "remove", "merge"})
+     */
     private $selling_boostings;
-    
+
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -64,9 +64,9 @@ class Boosting
     }
 
     /**
-     * Set boostingGameId
+     * Set boostingGameId.
      *
-     * @param integer $boostingGameId
+     * @param int $boostingGameId
      *
      * @return Boosting
      */
@@ -78,7 +78,7 @@ class Boosting
     }
 
     /**
-     * Get boostingGameId
+     * Get boostingGameId.
      *
      * @return int
      */
@@ -88,7 +88,7 @@ class Boosting
     }
 
     /**
-     * Set boostingRankFrom
+     * Set boostingRankFrom.
      *
      * @param string $boostingRankFrom
      *
@@ -102,7 +102,7 @@ class Boosting
     }
 
     /**
-     * Get boostingRankFrom
+     * Get boostingRankFrom.
      *
      * @return string
      */
@@ -112,7 +112,7 @@ class Boosting
     }
 
     /**
-     * Set boostingRankTo
+     * Set boostingRankTo.
      *
      * @param string $boostingRankTo
      *
@@ -126,7 +126,7 @@ class Boosting
     }
 
     /**
-     * Get boostingRankTo
+     * Get boostingRankTo.
      *
      * @return string
      */
@@ -136,7 +136,7 @@ class Boosting
     }
 
     /**
-     * Set boostingCost
+     * Set boostingCost.
      *
      * @param float $boostingCost
      *
@@ -150,7 +150,7 @@ class Boosting
     }
 
     /**
-     * Get boostingCost
+     * Get boostingCost.
      *
      * @return float
      */
@@ -159,7 +159,7 @@ class Boosting
         return $this->boostingCost;
     }
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -167,7 +167,7 @@ class Boosting
     }
 
     /**
-     * Add sellingBoosting
+     * Add sellingBoosting.
      *
      * @param \GamingSchoolBundle\Entity\Selling $sellingBoosting
      *
@@ -181,7 +181,7 @@ class Boosting
     }
 
     /**
-     * Remove sellingBoosting
+     * Remove sellingBoosting.
      *
      * @param \GamingSchoolBundle\Entity\Selling $sellingBoosting
      */
@@ -191,7 +191,7 @@ class Boosting
     }
 
     /**
-     * Get sellingBoostings
+     * Get sellingBoostings.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

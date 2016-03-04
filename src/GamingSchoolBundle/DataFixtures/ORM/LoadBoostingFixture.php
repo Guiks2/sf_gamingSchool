@@ -1,26 +1,27 @@
 <?php
 
 namespace GamingSchoolBundle\DataFixtures\ORM;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
 use GamingSchoolBundle\Entity\Boosting;
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 
 class LoadBoostingFixture extends AbstractFixture implements OrderedFixtureInterface
 {
-    public function getOrder() {
-      // the order in which fixtures will be loaded
+    public function getOrder()
+    {
+        // the order in which fixtures will be loaded
       // the lower the number, the sooner that this fixture is loaded
       return 4;
     }
-    
-    function load(ObjectManager $manager)
+
+    public function load(ObjectManager $manager)
     {
         $boostings = array(
             array('game_id' => $this->getReference('game0'), 'rank_from' => 'Bronze I', 'rank_to' => 'Gold I', 'cost' => '10'),
@@ -50,12 +51,10 @@ class LoadBoostingFixture extends AbstractFixture implements OrderedFixtureInter
             $boosting->setBoostingRankTo($b['rank_to']);
             $boosting->setBoostingCost($b['cost']);
             $manager->persist($boosting);
-            $this->addReference('boosting'.$i, $boosting);     
-            $i++;            
-        }        
+            $this->addReference('boosting'.$i, $boosting);
+            ++$i;
+        }
 
         $manager->flush();
     }
 }
-
-?>

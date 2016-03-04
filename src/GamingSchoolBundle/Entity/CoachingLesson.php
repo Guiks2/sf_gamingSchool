@@ -5,7 +5,7 @@ namespace GamingSchoolBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CoachingLesson
+ * CoachingLesson.
  *
  * @ORM\Table(name="coaching_lesson")
  * @ORM\Entity(repositoryClass="GamingSchoolBundle\Repository\CoachingLessonRepository")
@@ -47,9 +47,8 @@ class CoachingLesson
      */
     private $coachingLessonDateEnding;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -59,9 +58,9 @@ class CoachingLesson
     }
 
     /**
-     * Set coachingLessonStudentId
+     * Set coachingLessonStudentId.
      *
-     * @param integer $coachingLessonStudentId
+     * @param int $coachingLessonStudentId
      *
      * @return CoachingLesson
      */
@@ -73,7 +72,7 @@ class CoachingLesson
     }
 
     /**
-     * Get coachingLessonStudentId
+     * Get coachingLessonStudentId.
      *
      * @return int
      */
@@ -83,9 +82,9 @@ class CoachingLesson
     }
 
     /**
-     * Set coachingLessonCoachId
+     * Set coachingLessonCoachId.
      *
-     * @param integer $coachingLessonCoachId
+     * @param int $coachingLessonCoachId
      *
      * @return CoachingLesson
      */
@@ -97,7 +96,7 @@ class CoachingLesson
     }
 
     /**
-     * Get coachingLessonCoachId
+     * Get coachingLessonCoachId.
      *
      * @return int
      */
@@ -107,7 +106,7 @@ class CoachingLesson
     }
 
     /**
-     * Set coachingLessonDateBeginning
+     * Set coachingLessonDateBeginning.
      *
      * @param \DateTime $coachingLessonDateBeginning
      *
@@ -121,7 +120,7 @@ class CoachingLesson
     }
 
     /**
-     * Get coachingLessonDateBeginning
+     * Get coachingLessonDateBeginning.
      *
      * @return \DateTime
      */
@@ -131,7 +130,7 @@ class CoachingLesson
     }
 
     /**
-     * Set coachingLessonDateEnding
+     * Set coachingLessonDateEnding.
      *
      * @param \DateTime $coachingLessonDateEnding
      *
@@ -145,7 +144,7 @@ class CoachingLesson
     }
 
     /**
-     * Get coachingLessonDateEnding
+     * Get coachingLessonDateEnding.
      *
      * @return \DateTime
      */
