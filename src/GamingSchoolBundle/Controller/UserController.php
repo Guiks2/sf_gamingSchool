@@ -112,9 +112,7 @@ class UserController extends Controller
                 $em->persist($coach);
     
                 $em->flush();
-                $this->get('session')->getFlashBag()->add('success', 'Achat enregistré');
             } else {
-                $this->get('session')->getFlashBag()->add('failure', 'Votre solde est insuffisant pour acheter ce pack');
             }
         }
         
