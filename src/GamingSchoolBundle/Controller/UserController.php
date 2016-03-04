@@ -91,7 +91,6 @@ class UserController extends Controller
         $form = $this->createForm(SelectPack::Class, $data["packs"]);
 
         $form->handleRequest($request);
-        
 
         if($form->isSubmitted() && $form->isValid()){
             $em = $this->get('doctrine')->getManager();
