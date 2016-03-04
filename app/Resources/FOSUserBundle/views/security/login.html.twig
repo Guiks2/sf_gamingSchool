@@ -3,10 +3,40 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
+{% block stylesheets %}
+<link href='https://fonts.googleapis.com/css?family=Lato:400,900,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('/bundles/gamingschool/css/index-style.css') }}" />
+{% endblock %}
+<header>
+    <div class="container" id="headerContainer">
+        <a href="{{ path('index') }}"><img src="{{ asset('/bundles/gamingschool/img/logo.png') }}" alt="GamingSchool" /></a>
+        <ul id="mainMenu">
+            <li><a href="#" class="hover-sliding">NOS COACHS</a></li>
+            <li><a href="#" class="hover-sliding">NOS JEUX</a></li>
+            <li><a href="#" class="hover-sliding">A PROPOS DE NOUS</a></li>
+            <li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a style="color: #fbb03b" href="{{ path('fos_user_security_logout') }}">
+                    {{ 'SE DÉCONNECTER'|trans({}, 'FOSUserBundle') }}
+                </a>
+                {% else %}
+                <a href="/login" id="loginLabel">
+                    CONNEXION
+                </a>
+                <a href="/register" id="signupLabel">
+                    INSCRIPTION
+                </a>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+</header>
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
-<h2> Connexion </h2>
+<h2 style="color: white"> Connexion </h2>
 <form action="{{ path("fos_user_security_check") }}" method="post">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
