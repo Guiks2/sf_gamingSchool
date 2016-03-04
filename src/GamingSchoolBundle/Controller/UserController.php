@@ -9,7 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use GamingSchoolBundle\Form\SelectPack;
-use GamingSchoolBundle\Entity\Selling;  
+use GamingSchoolBundle\Entity\User;  
+use GamingSchoolBundle\Entity\CoachingPack;  
+use GamingSchoolBundle\Entity\CoachingSold;  
 
 class UserController extends Controller
 {
@@ -86,25 +88,36 @@ class UserController extends Controller
                 'price' => $pack->getCoachingPackPrice(),
             );
         }
-        $form = $this->createForm(SelectPack::Class, $data["packs"])->createView();
+        $form = $this->createForm(SelectPack::Class, $data["packs"]);
         
-        //$form->handleRequest($request);
-        
-       /* if($form->isSubmitted() && $form->isValid()){
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
             $em = $this->get('doctrine')->getManager();
             
-            $selling = new Selling();
-            $em->persist($selling);
-            $em->flush();
-        }*/
-        /*$data['form']->handleRequest($_REQUEST);
-        if ($data['form']->isSubmitted() && $data['form']->isValid()) {
-        // ... perform some action, such as saving the task to the database
-
-            return $this->redirectToRoute('task_success');
-        }*/
+            $userRepository = $em->getRepository('GamingSchoolBundle:User');
+            $coachingPackRepository = $em->getRepository('GamingSchoolBundle:CoachingPack');
+            $coachingSoldRepository = $em->getRepository('GamingSchoolBundle:CoachingSold');
+            
+            $student = $userRepository->find($this->get('security.token_storage')->getToken()->getUser()->getId());
+            $coach = $userRepository->find($coach_id);
+            $coachingPack = $coachingPackRepository->find($form->get('selectPack')->getData());
+            
+            $serviceCheck = $this->get("check_sold");
+            if($serviceCheck->check($student, $coachingPack)){
+                $student->setUserSold($student->getUserSold() - $coachingPack->getCoachingPackPrice());
+                $coach->setUserSold($coach->getUserSold() + $coachingPack->getCoachingPackPrice());
+            
+                $em->persist($student);
+                $em->persist($coach);
+    
+                $em->flush();
+                $this->get('session')->getFlashBag()->add('success', 'Achat enregistré');
+            } else {
+                $this->get('session')->getFlashBag()->add('failure', 'Votre solde est insuffisant pour acheter ce pack');
+            }
+        }
         
-        $data['form'] = $form;
+        $data['form'] = $form->createView();
         return $this->render('GamingSchoolBundle:Default:coach.html.twig', $data);
     }
 

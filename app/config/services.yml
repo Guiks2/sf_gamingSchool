@@ -7,3 +7,6 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+     check_sold:
+         class: GamingSchoolBundle\Services\CheckSoldService
+         arguments: [ '@doctrine.orm.entity_manager' ]
