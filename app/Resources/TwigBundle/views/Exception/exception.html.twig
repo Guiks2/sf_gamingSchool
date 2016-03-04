@@ -8,25 +8,14 @@
                 <img alt="" src="data:image/gif;base64,R0lGODlhHAAWAMQQANra2+bl5s3Mzevr6/Pz8+jo6O3t7fHx8c/Oz+Pj49PS093d3djX2NXV1eDf4MrJyvb29gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABAALAAAAAAcABYAQAWWICSOEDE4AamqRuAsT5yu6hA/wNrcfNysjl5PBOAJAAUDDRLoNRKDndAHnN6k058qaH2QuNelqCAYIm45MfGmIJCkAvUIPNB1td/uAyvEz/UqB0VUagQOZTEjgzx+Kk1CEAU8DAdqB4gPCHVjNwhucphKbzefamAFdlaNEGBZd1V3r1t6fE6wqrJ5XS4Ovb69MyQnv8QhADs=" />
             </div>
 
-            <h1>Error<strong> {{ status_code }}</strong> ({{ status_text }})<h1>
+            <h1>Erreur : <strong>{{ status_code }}</strong><h1>
             <br/>
             <h2>
-                {{ exception.class|abbr_class }} - {{ exception.message|nl2br|format_file_from_text }}
+                Oops !! Une erreur est survenue, la page suivante n'existe pas.
             </h2>
 
 
             {% set previous_count = exception.allPrevious|length %}
-            {% if previous_count %}
-                <div class="linked"><span><strong>{{ previous_count }}</strong> linked Exception{{ previous_count > 1 ? 's' : '' }}:</span>
-                    <ul>
-                        {% for i, previous in exception.allPrevious %}
-                            <li>
-                                {{ previous.class|abbr_class }} <a href="#traces-link-{{ i + 1 }}" onclick="toggle('traces-{{ i + 1 }}', 'traces'); switchIcons('icon-traces-{{ i + 1 }}-open', 'icon-traces-{{ i + 1 }}-close');">&#187;</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endif %}
 
             <div class="close-quote">
                 <img alt="" src="data:image/gif;base64,R0lGODlhHAAWAMQQANra2+bl5s3Mzevr6/Pz8+jo6O3t7fHx8c/Oz+Pj49PS093d3djX2NXV1eDf4MrJyvb29gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABAALAAAAAAcABYAQAWZoCOO5ACdaECuweO+sIOiDWw36IC8wjH/kAMDVoDYbLJf7ejC/QqvJHBGeC0fAgdhOrsCfDNmFHg9lo9SmvhxRpLXTpSBx6XuXNBjoN4GoNYPaSdtVoCCEIRNhm9iiS6Hjo6BjExxOWN1KAJNQAAvJpkQLS4LVAovfqGeLggQAwlne1MGBQCbqCc2AkV8bigOAQahKQ4DW0AhADs=" />
