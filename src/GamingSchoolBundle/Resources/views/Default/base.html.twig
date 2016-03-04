@@ -32,10 +32,10 @@
 				        </li>
 				        {% else %}
 				        <li>
-				        	<a href="/login" id="loginLabel">
+				        	<a href="{{ path('fos_user_security_login') }}" id="loginLabel">
 								CONNEXION
 							</a>
-							<a href="/register" id="signupLabel">
+							<a href="{{ path('fos_user_registration_register') }}" id="signupLabel">
 								INSCRIPTION
 							</a>
 						</li>

@@ -29,10 +29,15 @@
         </ul>
     </div>
 </header>
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-<h2 style="color: white"> Création de compte</h2>
-{{ form_widget(form) }}
-<div>
-        <input type="submit" value="{{ 'Inscription'|trans }}" />
-    </div>
-{{ form_end(form) }}
+
+<div id="mainContainer">
+    <div class="container" id="registerContainer">
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+        <h2>CRÉATION DE COMPTE</h2>
+        {{ form_widget(form) }}
+        <div>
+                <input type="submit" value="{{ 'Inscription'|trans }}" />
+            </div>
+        {{ form_end(form) }}
+    <div class="container" id="profileInfosContainer">
+</div>

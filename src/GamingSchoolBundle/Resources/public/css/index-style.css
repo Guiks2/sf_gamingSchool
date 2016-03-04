@@ -28,6 +28,7 @@ header #headerContainer {
 	margin: 0 auto;
 	padding: 20px;
 	box-sizing: border-box;
+	text-align: center;
 }
 
 header #headerContainer img{
@@ -296,4 +297,20 @@ ul#mainMenu a {
 
 #select_pack_selectPack{
 	display: block!important;
+}
+
+#registerContainer,
+#loginContainer {
+	width: 60%;
+	min-width: 800px;
+	margin: 0 auto;
+	background-color: whitesmoke;
+	text-align: center;
+}
+
+#registerContainer h2,
+#loginContainer h2 {
+	font-family: 'Oswald', sans-serif;
+	font-size: 44px;
+	color: #444;
 }
