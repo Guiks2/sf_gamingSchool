@@ -24,7 +24,8 @@ class LoadUserFixture extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $users = array(
-            array('username' => 'User', 'password' => 'password', 'first_name' => 'Jean', 'last_name' => 'Paul', 'email' => 'jean.paul@mail.fr', 'address' => '2 test adresse 75000', 'phone' => '0102030405', 'role' => '', 'sold' => '1000'),
+            array('username' => 'User1', 'password' => 'password', 'first_name' => 'Jean', 'last_name' => 'Paul', 'email' => 'jean.paul1@mail.fr', 'address' => '2 test adresse 75000', 'phone' => '0102030405', 'role' => '', 'sold' => '1000'),
+            array('username' => 'User2', 'password' => 'password', 'first_name' => 'Jean', 'last_name' => 'Paul', 'email' => 'jean.paul2@mail.fr', 'address' => '2 test adresse 75000', 'phone' => '0102030405', 'role' => '', 'sold' => '5'),
             array('username' => 'Coach1', 'password' => 'password', 'first_name' => 'Jean', 'last_name' => 'René', 'email' => 'jean.rene1@mail.fr', 'address' => '1 test adresse 75000', 'phone' => '0203040506', 'role' => 'ROLE_COACH', 'sold' => '1000'),
             array('username' => 'Coach2', 'password' => 'password', 'first_name' => 'Jean', 'last_name' => 'René', 'email' => 'jean.rene2@mail.fr', 'address' => '1 test adresse 75000', 'phone' => '0203040506', 'role' => 'ROLE_COACH', 'sold' => '1000'),
             array('username' => 'Coach3', 'password' => 'password', 'first_name' => 'Jean', 'last_name' => 'René', 'email' => 'jean.rene3@mail.fr', 'address' => '1 test adresse 75000', 'phone' => '0203040506', 'role' => 'ROLE_COACH', 'sold' => '1000'),
