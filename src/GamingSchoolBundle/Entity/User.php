@@ -27,19 +27,29 @@ class User extends BaseUser
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+	 *     max=30,
+	 *     maxMessage="Le prénom ne peut excéder {{ limit }} caratères."
+	 * )
      * @ORM\Column(name="user_firstname", type="string", length=30, nullable=true)
      */
     protected $userFirstname;
 
     /**
      * @var string
-     *
+	 * @Assert\Length(
+	 *     max=30,
+	 *     maxMessage="Le nom ne peut excéder {{ limit }} caratères."
+	 * )
      * @ORM\Column(name="user_lastname", type="string", length=30, nullable=true)
      */
     protected $userLastname;
 	
     /**
+	 * @Assert\Length(
+	 *     max=255,
+	 *     maxMessage="L'adresse ne peut excéder {{ limit }} caratères."
+	 * )
      * @ORM\Column(name="user_address", type="string", length=255, nullable=true)
      */
     protected $userAddress;
