@@ -88,14 +88,6 @@ class DefaultController extends Controller
         return new Response('Page d\'inscription');
 		//return $this->render('GamingSchoolBundle:Default:subscribe.html.twig');
     }
-
-	/**
-     * @Route("/profile/coach", name="coachprofile")
-     */
-    public function coachProfileAction(Request $request)
-    {
-		return $this->render('GamingSchoolBundle:Default:coach.html.twig');
-    }
 	
 	public function checkIsConnected(Request $request){
 		$session = $request->getSession();
