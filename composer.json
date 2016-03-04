@@ -6,11 +6,13 @@
         "psr-4": {
             "": "src/"
         },
+        "psr-0": {
+        	"": "src"
+    	},
         "classmap": [
             "app/AppKernel.php",
             "app/AppCache.php"
-        ],
-        "autoload": {"psr-0": {"": "src"}}
+        ]
     },
     "autoload-dev": {
         "psr-4": {

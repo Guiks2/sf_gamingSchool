@@ -41,7 +41,7 @@ class UserController extends Controller
     	
         $listCoaches = $userRepository->findByCoaches($game->getId());
     	$data["game"] = $game->getGameName();
-
+    
     	foreach ($listCoaches as $coach) {
     		$data["listCoaches"][] = array(
     			'id' => $coach->getId(),
@@ -49,7 +49,7 @@ class UserController extends Controller
     			'firstname' => $coach->getUserFirstName(),
     			'lastname' => $coach ->getUserLastName(),
     			'email' => $coach->getEmail()
-    			);
+    		);
     	}
     	return $this->render('GamingSchoolBundle:Default:listcoaches.html.twig', $data);
     }
