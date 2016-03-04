@@ -37,7 +37,7 @@ header #headerContainer img{
 }
 
 ul#mainMenu {
-	float: left;
+	/*float: left;*/
 	vertical-align: middle;
 }
 
