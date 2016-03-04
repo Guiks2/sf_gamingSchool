@@ -25,7 +25,13 @@ class DefaultController extends Controller
 		  ->getManager()
 		  ->getRepository('GamingSchoolBundle:game')
 		;
-		
+
+		$securityContext = $this->container->get('security.authorization_checker');
+		if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+    		$data["logged_user_id"] = $this->get('security.token_storage')->getToken()->getUser()->getId();
+		}
+			
+
 		$listGames = $repository->findAll();
 
 		foreach ($listGames as $game) {
