@@ -16,27 +16,31 @@
 	<body>
 		<header>
 			<div class="container" id="headerContainer">
-				<a href="/"><img src="{{ asset('/bundles/gamingschool/img/logo.png') }}" alt="GamingSchool" /></a>
+				<a href="{{ path('index') }}"><img src="{{ asset('/bundles/gamingschool/img/logo.png') }}" alt="GamingSchool" /></a>
 				<ul id="mainMenu">
 					<li><a href="#" class="hover-sliding">NOS COACHS</a></li>
 					<li><a href="#" class="hover-sliding">NOS JEUX</a></li>
 					<li><a href="#" class="hover-sliding">A PROPOS DE NOUS</a></li>
-					<li>
 						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+						<li>
+							<a href="{{ path('userprofile', {'user_id': logged_user_id}) }}" class="hover-sliding">MON PROFIL</a></li>
+						<li>
+						<li>
 				            <a style="color: #fbb03b" href="{{ path('fos_user_security_logout') }}">
 				                {{ 'SE DÉCONNECTER'|trans({}, 'FOSUserBundle') }}
 				            </a>
+				        </li>
 				        {% else %}
+				        <li>
 				        	<a href="/login" id="loginLabel">
 								CONNEXION
 							</a>
 							<a href="/register" id="signupLabel">
 								INSCRIPTION
 							</a>
+						</li>
 						{% endif %}
-					</li>
 				</ul>
-
 			</div>
 		</header>
 

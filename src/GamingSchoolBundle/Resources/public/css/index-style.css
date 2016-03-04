@@ -37,7 +37,7 @@ header #headerContainer img{
 }
 
 ul#mainMenu {
-	float: left;
+	/*float: left;*/
 	vertical-align: middle;
 }
 
@@ -282,6 +282,16 @@ ul#mainMenu a {
 	color: whitesmoke!important;
 	background-color: #555!important;
 	text-align: left;
+}
+
+/*****************************************/
+/*********** Coach page style ************/
+/*****************************************/
+
+#coachInfosContainer {
+	width: 60%;
+	min-width: 800px;
+	margin: 0 auto;
 }
 
 #select_pack_selectPack{
