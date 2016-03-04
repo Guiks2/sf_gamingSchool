@@ -5,7 +5,7 @@ namespace GamingSchoolBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CoachingSold
+ * CoachingSold.
  *
  * @ORM\Table(name="coaching_sold")
  * @ORM\Entity(repositoryClass="GamingSchoolBundle\Repository\CoachingSoldRepository")
@@ -46,9 +46,8 @@ class CoachingSold
      */
     private $coachingSoldNbHours;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -58,9 +57,9 @@ class CoachingSold
     }
 
     /**
-     * Set coachingSoldStudentId
+     * Set coachingSoldStudentId.
      *
-     * @param integer $coachingSoldStudentId
+     * @param int $coachingSoldStudentId
      *
      * @return CoachingSold
      */
@@ -72,7 +71,7 @@ class CoachingSold
     }
 
     /**
-     * Get coachingSoldStudentId
+     * Get coachingSoldStudentId.
      *
      * @return int
      */
@@ -82,9 +81,9 @@ class CoachingSold
     }
 
     /**
-     * Set coachingSoldCoachId
+     * Set coachingSoldCoachId.
      *
-     * @param integer $coachingSoldCoachId
+     * @param int $coachingSoldCoachId
      *
      * @return CoachingSold
      */
@@ -96,7 +95,7 @@ class CoachingSold
     }
 
     /**
-     * Get coachingSoldCoachId
+     * Get coachingSoldCoachId.
      *
      * @return int
      */
@@ -106,9 +105,9 @@ class CoachingSold
     }
 
     /**
-     * Set coachingSoldGameId
+     * Set coachingSoldGameId.
      *
-     * @param integer $coachingSoldGameId
+     * @param int $coachingSoldGameId
      *
      * @return CoachingSold
      */
@@ -120,7 +119,7 @@ class CoachingSold
     }
 
     /**
-     * Get coachingSoldGameId
+     * Get coachingSoldGameId.
      *
      * @return int
      */
@@ -130,7 +129,7 @@ class CoachingSold
     }
 
     /**
-     * Set coachingSoldNbHours
+     * Set coachingSoldNbHours.
      *
      * @param string $coachingSoldNbHours
      *
@@ -144,7 +143,7 @@ class CoachingSold
     }
 
     /**
-     * Get coachingSoldNbHours
+     * Get coachingSoldNbHours.
      *
      * @return int
      */

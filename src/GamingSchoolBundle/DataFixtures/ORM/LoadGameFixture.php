@@ -1,26 +1,27 @@
 <?php
 
 namespace GamingSchoolBundle\DataFixtures\ORM;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
 use GamingSchoolBundle\Entity\Game;
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 
 class LoadGameFixture extends AbstractFixture implements OrderedFixtureInterface
 {
-    public function getOrder() {
-      // the order in which fixtures will be loaded
+    public function getOrder()
+    {
+        // the order in which fixtures will be loaded
       // the lower the number, the sooner that this fixture is loaded
       return 1;
     }
-    
-    function load(ObjectManager $manager)
+
+    public function load(ObjectManager $manager)
     {
         $games = array(
             array('name' => 'League of Legends', 'logo' => '', 'slug' => 'league-of-legends'),
@@ -37,12 +38,10 @@ class LoadGameFixture extends AbstractFixture implements OrderedFixtureInterface
             $game->setGameLogoUrl($g['logo']);
             $game->setGameSlug($g['slug']);
             $manager->persist($game);
-            $this->addReference('game'.$i, $game);     
-            $i++;                             
-        }   
-        
+            $this->addReference('game'.$i, $game);
+            ++$i;
+        }
+
         $manager->flush();
     }
 }
-
-?>

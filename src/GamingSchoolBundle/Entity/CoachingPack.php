@@ -5,7 +5,7 @@ namespace GamingSchoolBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CoachingPack
+ * CoachingPack.
  *
  * @ORM\Table(name="coaching_pack")
  * @ORM\Entity(repositoryClass="GamingSchoolBundle\Repository\CoachingPackRepository")
@@ -22,7 +22,8 @@ class CoachingPack
     private $id;
 
     /**
-     * toString
+     * toString.
+     *
      * @return string
      */
     public function __toString()
@@ -57,12 +58,12 @@ class CoachingPack
     private $coachingPackCoachId;
 
     /**
-    * @ORM\OneToMany(targetEntity="Selling", mappedBy="sellingPackId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="Selling", mappedBy="sellingPackId", cascade={"persist", "remove", "merge"})
+     */
     private $selling_packs;
-    
+
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -72,9 +73,9 @@ class CoachingPack
     }
 
     /**
-     * Set coachingPackNbHours
+     * Set coachingPackNbHours.
      *
-     * @param integer $coachingPackNbHours
+     * @param int $coachingPackNbHours
      *
      * @return CoachingPack
      */
@@ -86,7 +87,7 @@ class CoachingPack
     }
 
     /**
-     * Get coachingPackNbHours
+     * Get coachingPackNbHours.
      *
      * @return int
      */
@@ -96,7 +97,7 @@ class CoachingPack
     }
 
     /**
-     * Set coachingPackPrice
+     * Set coachingPackPrice.
      *
      * @param float $coachingPackPrice
      *
@@ -110,7 +111,7 @@ class CoachingPack
     }
 
     /**
-     * Get coachingPackPrice
+     * Get coachingPackPrice.
      *
      * @return float
      */
@@ -120,9 +121,9 @@ class CoachingPack
     }
 
     /**
-     * Set coachingPackGameId
+     * Set coachingPackGameId.
      *
-     * @param integer $coachingPackGameId
+     * @param int $coachingPackGameId
      *
      * @return CoachingPack
      */
@@ -134,7 +135,7 @@ class CoachingPack
     }
 
     /**
-     * Get coachingPackGameId
+     * Get coachingPackGameId.
      *
      * @return int
      */
@@ -144,9 +145,9 @@ class CoachingPack
     }
 
     /**
-     * Set coachingPackCoachId
+     * Set coachingPackCoachId.
      *
-     * @param integer $coachingPackCoachId
+     * @param int $coachingPackCoachId
      *
      * @return CoachingPack
      */
@@ -158,7 +159,7 @@ class CoachingPack
     }
 
     /**
-     * Get coachingPackCoachId
+     * Get coachingPackCoachId.
      *
      * @return int
      */
@@ -167,7 +168,7 @@ class CoachingPack
         return $this->coachingPackCoachId;
     }
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -175,7 +176,7 @@ class CoachingPack
     }
 
     /**
-     * Add sellingPack
+     * Add sellingPack.
      *
      * @param \GamingSchoolBundle\Entity\Selling $sellingPack
      *
@@ -189,7 +190,7 @@ class CoachingPack
     }
 
     /**
-     * Remove sellingPack
+     * Remove sellingPack.
      *
      * @param \GamingSchoolBundle\Entity\Selling $sellingPack
      */
@@ -199,7 +200,7 @@ class CoachingPack
     }
 
     /**
-     * Get sellingPacks
+     * Get sellingPacks.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

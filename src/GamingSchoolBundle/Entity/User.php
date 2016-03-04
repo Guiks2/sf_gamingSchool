@@ -7,49 +7,47 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * User
+ * User.
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="GamingSchoolBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {
-
     /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     *
      */
     protected $id;
 
     /**
      * @var string
      * @Assert\Length(
-	 *     max=30,
-	 *     maxMessage="Le prénom ne peut excéder {{ limit }} caratères."
-	 * )
+     *     max=30,
+     *     maxMessage="Le prénom ne peut excéder {{ limit }} caratères."
+     * )
      * @ORM\Column(name="user_firstname", type="string", length=30, nullable=true)
      */
     protected $userFirstname;
 
     /**
      * @var string
-	 * @Assert\Length(
-	 *     max=30,
-	 *     maxMessage="Le nom ne peut excéder {{ limit }} caratères."
-	 * )
+     * @Assert\Length(
+     *     max=30,
+     *     maxMessage="Le nom ne peut excéder {{ limit }} caratères."
+     * )
      * @ORM\Column(name="user_lastname", type="string", length=30, nullable=true)
      */
     protected $userLastname;
-	
+
     /**
-	 * @Assert\Length(
-	 *     max=255,
-	 *     maxMessage="L'adresse ne peut excéder {{ limit }} caratères."
-	 * )
+     * @Assert\Length(
+     *     max=255,
+     *     maxMessage="L'adresse ne peut excéder {{ limit }} caratères."
+     * )
      * @ORM\Column(name="user_address", type="string", length=255, nullable=true)
      */
     protected $userAddress;
@@ -57,9 +55,9 @@ class User extends BaseUser
     /**
      * @var string
      * @Assert\Length(
-	 *     min=10,
-	 *     minMessage="Le numéro de téléphone doit contenir au moins {{ limit }} caratères."
-	 * )
+     *     min=10,
+     *     minMessage="Le numéro de téléphone doit contenir au moins {{ limit }} caratères."
+     * )
      * @ORM\Column(name="user_phone", type="string", length=20, nullable=true)
      */
     protected $userPhone;
@@ -71,44 +69,43 @@ class User extends BaseUser
      */
     protected $userSold = 0;
 
-
     /**
-    * @ORM\OneToMany(targetEntity="CoachingPack", mappedBy="coachingPackCoachId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="CoachingPack", mappedBy="coachingPackCoachId", cascade={"persist", "remove", "merge"})
+     */
     private $coaching_pack;
 
     /**
-    * @ORM\OneToMany(targetEntity="CoachingSold", mappedBy="coachingSoldCoachId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="CoachingSold", mappedBy="coachingSoldCoachId", cascade={"persist", "remove", "merge"})
+     */
     private $coaching_sold_coachs;
 
     /**
-    * @ORM\OneToMany(targetEntity="CoachingSold", mappedBy="coachingSoldStudentId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="CoachingSold", mappedBy="coachingSoldStudentId", cascade={"persist", "remove", "merge"})
+     */
     private $coaching_sold_students;
 
     /**
-    * @ORM\OneToMany(targetEntity="Selling", mappedBy="sellingStudentId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="Selling", mappedBy="sellingStudentId", cascade={"persist", "remove", "merge"})
+     */
     private $selling_students;
 
     /**
-    * @ORM\OneToMany(targetEntity="Selling", mappedBy="sellingCoachId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="Selling", mappedBy="sellingCoachId", cascade={"persist", "remove", "merge"})
+     */
     private $selling_coachs;
 
     /**
-    * @ORM\OneToMany(targetEntity="CoachingLesson", mappedBy="coachingLessonStudentId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="CoachingLesson", mappedBy="coachingLessonStudentId", cascade={"persist", "remove", "merge"})
+     */
     private $coaching_lesson_students;
 
     /**
-    * @ORM\OneToMany(targetEntity="CoachingLesson", mappedBy="coachingLessonCoachId", cascade={"persist", "remove", "merge"})
-    */
+     * @ORM\OneToMany(targetEntity="CoachingLesson", mappedBy="coachingLessonCoachId", cascade={"persist", "remove", "merge"})
+     */
     private $coaching_lesson_coachs;
-                        
+
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -118,7 +115,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set userFirstname
+     * Set userFirstname.
      *
      * @param string $userFirstname
      *
@@ -132,7 +129,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get userFirstname
+     * Get userFirstname.
      *
      * @return string
      */
@@ -142,7 +139,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set userLastname
+     * Set userLastname.
      *
      * @param string $userLastname
      *
@@ -156,7 +153,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get userLastname
+     * Get userLastname.
      *
      * @return string
      */
@@ -166,7 +163,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set userAddress
+     * Set userAddress.
      *
      * @param string $userAddress
      *
@@ -180,7 +177,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get userAddress
+     * Get userAddress.
      *
      * @return string
      */
@@ -190,7 +187,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set userPhone
+     * Set userPhone.
      *
      * @param string $userPhone
      *
@@ -204,7 +201,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get userPhone
+     * Get userPhone.
      *
      * @return string
      */
@@ -214,7 +211,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set userSold
+     * Set userSold.
      *
      * @param float $userSold
      *
@@ -228,7 +225,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get userSold
+     * Get userSold.
      *
      * @return float
      */
@@ -237,16 +234,16 @@ class User extends BaseUser
         return $this->userSold;
     }
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
         parent::__construct();
-        $this->coaching_pack = new \Doctrine\Common\Collections\ArrayCollection();        
+        $this->coaching_pack = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add coachingPack
+     * Add coachingPack.
      *
      * @param \GamingSchoolBundle\Entity\CoachingPack $coachingPack
      *
@@ -260,7 +257,7 @@ class User extends BaseUser
     }
 
     /**
-     * Remove coachingPack
+     * Remove coachingPack.
      *
      * @param \GamingSchoolBundle\Entity\CoachingPack $coachingPack
      */
@@ -270,7 +267,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get coachingPack
+     * Get coachingPack.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -280,7 +277,7 @@ class User extends BaseUser
     }
 
     /**
-     * Add coachingSoldCoach
+     * Add coachingSoldCoach.
      *
      * @param \GamingSchoolBundle\Entity\CoachingSold $coachingSoldCoach
      *
@@ -294,7 +291,7 @@ class User extends BaseUser
     }
 
     /**
-     * Remove coachingSoldCoach
+     * Remove coachingSoldCoach.
      *
      * @param \GamingSchoolBundle\Entity\CoachingSold $coachingSoldCoach
      */
@@ -304,7 +301,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get coachingSoldCoachs
+     * Get coachingSoldCoachs.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -314,7 +311,7 @@ class User extends BaseUser
     }
 
     /**
-     * Add coachingSoldStudent
+     * Add coachingSoldStudent.
      *
      * @param \GamingSchoolBundle\Entity\CoachingSold $coachingSoldStudent
      *
@@ -328,7 +325,7 @@ class User extends BaseUser
     }
 
     /**
-     * Remove coachingSoldStudent
+     * Remove coachingSoldStudent.
      *
      * @param \GamingSchoolBundle\Entity\CoachingSold $coachingSoldStudent
      */
@@ -338,7 +335,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get coachingSoldStudents
+     * Get coachingSoldStudents.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -348,7 +345,7 @@ class User extends BaseUser
     }
 
     /**
-     * Add sellingStudent
+     * Add sellingStudent.
      *
      * @param \GamingSchoolBundle\Entity\Selling $sellingStudent
      *
@@ -362,7 +359,7 @@ class User extends BaseUser
     }
 
     /**
-     * Remove sellingStudent
+     * Remove sellingStudent.
      *
      * @param \GamingSchoolBundle\Entity\Selling $sellingStudent
      */
@@ -372,7 +369,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get sellingStudents
+     * Get sellingStudents.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -382,7 +379,7 @@ class User extends BaseUser
     }
 
     /**
-     * Add sellingCoach
+     * Add sellingCoach.
      *
      * @param \GamingSchoolBundle\Entity\Selling $sellingCoach
      *
@@ -396,7 +393,7 @@ class User extends BaseUser
     }
 
     /**
-     * Remove sellingCoach
+     * Remove sellingCoach.
      *
      * @param \GamingSchoolBundle\Entity\Selling $sellingCoach
      */
@@ -406,7 +403,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get sellingCoachs
+     * Get sellingCoachs.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -416,7 +413,7 @@ class User extends BaseUser
     }
 
     /**
-     * Add coachingLessonStudent
+     * Add coachingLessonStudent.
      *
      * @param \GamingSchoolBundle\Entity\CoachingLesson $coachingLessonStudent
      *
@@ -430,7 +427,7 @@ class User extends BaseUser
     }
 
     /**
-     * Remove coachingLessonStudent
+     * Remove coachingLessonStudent.
      *
      * @param \GamingSchoolBundle\Entity\CoachingLesson $coachingLessonStudent
      */
@@ -440,7 +437,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get coachingLessonStudents
+     * Get coachingLessonStudents.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -450,7 +447,7 @@ class User extends BaseUser
     }
 
     /**
-     * Add coachingLessonCoach
+     * Add coachingLessonCoach.
      *
      * @param \GamingSchoolBundle\Entity\CoachingLesson $coachingLessonCoach
      *
@@ -464,7 +461,7 @@ class User extends BaseUser
     }
 
     /**
-     * Remove coachingLessonCoach
+     * Remove coachingLessonCoach.
      *
      * @param \GamingSchoolBundle\Entity\CoachingLesson $coachingLessonCoach
      */
@@ -474,7 +471,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get coachingLessonCoachs
+     * Get coachingLessonCoachs.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -483,13 +480,13 @@ class User extends BaseUser
         return $this->coaching_lesson_coachs;
     }
 
-     public function getExpiresAt()
-     {
+    public function getExpiresAt()
+    {
         return $this->expiresAt;
-     }
+    }
 
-     public function getCredentialsExpireAt()
-     {
-         return $this->credentialsExpireAt;
-     }
+    public function getCredentialsExpireAt()
+    {
+        return $this->credentialsExpireAt;
+    }
 }

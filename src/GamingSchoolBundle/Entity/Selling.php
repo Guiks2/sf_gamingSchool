@@ -5,7 +5,7 @@ namespace GamingSchoolBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Selling
+ * Selling.
  *
  * @ORM\Table(name="selling")
  * @ORM\Entity(repositoryClass="GamingSchoolBundle\Repository\SellingRepository")
@@ -26,25 +26,25 @@ class Selling
      * @ORM\JoinColumn(name="selling_student_id", referencedColumnName="id")
      */
     private $sellingStudentId;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="selling_coachs")
      * @ORM\JoinColumn(name="selling_coach_id", referencedColumnName="id")
      */
     private $sellingCoachId;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="CoachingPack", inversedBy="selling_packs")
      * @ORM\JoinColumn(name="selling_pack_id", referencedColumnName="id")
      */
     private $sellingPackId;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Boosting", inversedBy="selling_boostings")
      * @ORM\JoinColumn(name="selling_boosting_id", referencedColumnName="id")
      */
     private $sellingBoostingId;
-    
+
     /**
      * @var float
      *
@@ -59,9 +59,8 @@ class Selling
      */
     private $sellingDate;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -71,9 +70,9 @@ class Selling
     }
 
     /**
-     * Set sellingStudentId
+     * Set sellingStudentId.
      *
-     * @param integer $sellingStudentId
+     * @param int $sellingStudentId
      *
      * @return Selling
      */
@@ -85,7 +84,7 @@ class Selling
     }
 
     /**
-     * Get sellingStudentId
+     * Get sellingStudentId.
      *
      * @return int
      */
@@ -95,9 +94,9 @@ class Selling
     }
 
     /**
-     * Set sellingCoachId
+     * Set sellingCoachId.
      *
-     * @param integer $sellingCoachId
+     * @param int $sellingCoachId
      *
      * @return Selling
      */
@@ -109,7 +108,7 @@ class Selling
     }
 
     /**
-     * Get sellingCoachId
+     * Get sellingCoachId.
      *
      * @return int
      */
@@ -119,9 +118,9 @@ class Selling
     }
 
     /**
-     * Set sellingPackId
+     * Set sellingPackId.
      *
-     * @param integer $sellingPackId
+     * @param int $sellingPackId
      *
      * @return Selling
      */
@@ -133,7 +132,7 @@ class Selling
     }
 
     /**
-     * Get sellingPackId
+     * Get sellingPackId.
      *
      * @return int
      */
@@ -143,9 +142,9 @@ class Selling
     }
 
     /**
-     * Set sellingBoostingId
+     * Set sellingBoostingId.
      *
-     * @param integer $sellingBoostingId
+     * @param int $sellingBoostingId
      *
      * @return Selling
      */
@@ -157,7 +156,7 @@ class Selling
     }
 
     /**
-     * Get sellingBoostingId
+     * Get sellingBoostingId.
      *
      * @return int
      */
@@ -167,7 +166,7 @@ class Selling
     }
 
     /**
-     * Set sellingPrice
+     * Set sellingPrice.
      *
      * @param float $sellingPrice
      *
@@ -181,7 +180,7 @@ class Selling
     }
 
     /**
-     * Get sellingPrice
+     * Get sellingPrice.
      *
      * @return float
      */
@@ -191,7 +190,7 @@ class Selling
     }
 
     /**
-     * Set sellingDate
+     * Set sellingDate.
      *
      * @param \DateTime $sellingDate
      *
@@ -205,7 +204,7 @@ class Selling
     }
 
     /**
-     * Get sellingDate
+     * Get sellingDate.
      *
      * @return \DateTime
      */
