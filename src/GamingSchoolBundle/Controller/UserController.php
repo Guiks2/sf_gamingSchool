@@ -32,8 +32,14 @@ class UserController extends Controller
     	->getRepository('GamingSchoolBundle:game')
     	;
 
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            $data["logged_user_id"] = $this->get('security.token_storage')->getToken()->getUser()->getId();
+        }
+
     	$game = $gameRepository->findOneBy(array('gameSlug' => $game_slug));
-    	$listCoaches = $userRepository->findByCoaches($game->getId());
+    	
+        $listCoaches = $userRepository->findByCoaches($game->getId());
     	$data["game"] = $game->getGameName();
 
     	foreach ($listCoaches as $coach) {
@@ -59,6 +65,11 @@ class UserController extends Controller
     	->getRepository('GamingSchoolBundle:User')
     	;
 
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            $data["logged_user_id"] = $this->get('security.token_storage')->getToken()->getUser()->getId();
+        }
+
     	$infosUser = $userRepository->find($user_id);
     	$data["infos"] = $infosUser;
 
@@ -80,6 +91,11 @@ class UserController extends Controller
     	;
     	$data['coach'] = $userRepository->find($coach_id);
 
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            $data["logged_user_id"] = $this->get('security.token_storage')->getToken()->getUser()->getId();
+        }
+
     	$packs = $data['coach']->getCoachingPack();
     	foreach ($packs as $pack) {
     		$data["packs"][] = array(
@@ -88,37 +104,39 @@ class UserController extends Controller
     			'price' => $pack->getCoachingPackPrice(),
     			);
     	}
-        $form = $this->createForm(SelectPack::Class, $data["packs"]);
 
-        $form->handleRequest($request);
+        if(isset($data["packs"])){
+            $form = $this->createForm(SelectPack::Class, $data["packs"]);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $em = $this->get('doctrine')->getManager();
-            
-            $userRepository = $em->getRepository('GamingSchoolBundle:User');
-            $coachingPackRepository = $em->getRepository('GamingSchoolBundle:CoachingPack');
-            $coachingSoldRepository = $em->getRepository('GamingSchoolBundle:CoachingSold');
-            
-            $student = $userRepository->find($this->get('security.token_storage')->getToken()->getUser()->getId());
-            $coach = $userRepository->find($coach_id);
-            $coachingPack = $coachingPackRepository->find($form->get('selectPack')->getData());
-            
-            $serviceCheck = $this->get("check_sold");
-            if($serviceCheck->check($student, $coachingPack)){
-                $student->setUserSold($student->getUserSold() - $coachingPack->getCoachingPackPrice());
-                $coach->setUserSold($coach->getUserSold() + $coachingPack->getCoachingPackPrice());
-            
-                $em->persist($student);
-                $em->persist($coach);
-    
-                $em->flush();
-                $this->get('session')->getFlashBag()->add('success', 'Achat enregistré');
-            } else {
-                $this->get('session')->getFlashBag()->add('failure', 'Votre solde est insuffisant pour acheter ce pack');
+            $form->handleRequest($request);
+
+            if($form->isSubmitted() && $form->isValid()){
+                $em = $this->get('doctrine')->getManager();
+                
+                $userRepository = $em->getRepository('GamingSchoolBundle:User');
+                $coachingPackRepository = $em->getRepository('GamingSchoolBundle:CoachingPack');
+                $coachingSoldRepository = $em->getRepository('GamingSchoolBundle:CoachingSold');
+                
+                $student = $userRepository->find($this->get('security.token_storage')->getToken()->getUser()->getId());
+                $coach = $userRepository->find($coach_id);
+                $coachingPack = $coachingPackRepository->find($form->get('selectPack')->getData());
+                
+                $serviceCheck = $this->get("check_sold");
+                if($serviceCheck->check($student, $coachingPack)){
+                    $student->setUserSold($student->getUserSold() - $coachingPack->getCoachingPackPrice());
+                    $coach->setUserSold($coach->getUserSold() + $coachingPack->getCoachingPackPrice());
+                
+                    $em->persist($student);
+                    $em->persist($coach);
+        
+                    $em->flush();
+                } else {
+                }
             }
+            
+            $data['form'] = $form->createView();
         }
         
-        $data['form'] = $form->createView();
         return $this->render('GamingSchoolBundle:Default:coach.html.twig', $data);
     }
 
